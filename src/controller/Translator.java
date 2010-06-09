@@ -42,7 +42,7 @@ public class Translator {
 		//		b) con due parametri[fileName, SuperSummaryModel]
 		//			- SuperAeria = Aeria + Skos  
 		// * E' possibile? Non so dove prendere concept e dove rel! Potrebbero provenire dalla stessa risorsa!
-		// * Quello che crea probblemi  SOLO summary.summClass = summary.model.createClass ! --> usa SKOS non aeria
+		// * Quello che crea probblemi e' SOLO summary.summClass = summary.model.createClass ! --> usa SKOS non aeria
 
 		
 		ontoToSumm = new OntoBuilded(SUMMARIZATION_CONF_FILE, fileName);
