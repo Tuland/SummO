@@ -1,0 +1,4 @@
+--- !model.RelAndConceptSet
+directedRel: directedRelationship
+interGeneralizeRel: a-generalize
+generalizeRel: generalize

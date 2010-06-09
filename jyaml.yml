@@ -1,0 +1,5 @@
+minimalOutput: true
+encoding: "ISO-8859-1"
+transfers:
+  hash: java.util.HashMap
+  double: java.lang.Double

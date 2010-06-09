@@ -1,0 +1,5 @@
+--- !model.OntoConf
+path: http://127.0.0.1/~tuland/Ontologies/
+name: skos-core
+ext: owl
+base: http://www.w3.org/2004/02/skos/core
