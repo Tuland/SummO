@@ -36,17 +36,20 @@ public class OntoConf {
 	}
 	
 	/**
-	 * @param n is the ontology name
-	 * @param e is the file extension
-	 * @param b is the base ontology
-	 * @param p is the ontology path
+	 * @param nameStr is the ontology name
+	 * @param extStr is the file extension
+	 * @param baseStr is the base ontology
+	 * @param pathStr is the ontology path
 	 */
-	public OntoConf(String p, String n, String e, String b ){
+	public OntoConf(String pathStr, 
+					String nameStr, 
+					String extStr, 
+					String baseStr ){
 		this();
-		path = p;
-		name = n;
-		ext = e;
-		base = b;
+		path = pathStr;
+		name = nameStr;
+		ext = extStr;
+		base = baseStr;
 		buildPathAttributes("");
 	}
 	

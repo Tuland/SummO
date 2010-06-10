@@ -67,7 +67,7 @@ public class Translator {
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
 		ObjectProperty dirRelProp = summModel.model.getObjectProperty(	summModel.conf.nameSpace + 
-																		summModel.relAndConcept.directedRel );
+																		summModel.prop.directedRel );
 		OntProperty relationProp = ontoToSumm.model.createObjectProperty(	ontoToSumm.conf.nameSpace +
 																			propertyStr );
 		
@@ -85,7 +85,7 @@ public class Translator {
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
 		ObjectProperty generalizeProp = summModel.model.getObjectProperty(	summModel.conf.nameSpace + 
-																			summModel.relAndConcept.generalizeRel );
+																			summModel.prop.generalizeRel );
 		ontoToSumm.model.add(subjectInd, generalizeProp, objectInd);
 	}
 

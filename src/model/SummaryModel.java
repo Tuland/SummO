@@ -13,13 +13,15 @@ import com.hp.hpl.jena.rdf.model.HasNoModelException;
  *
  */
 public class SummaryModel extends OntoLoaded{
-	public RelAndConceptSet relAndConcept;
+	public PropSet prop;
 
-	public SummaryModel(String confFile, String relFile) throws HasNoModelException, OntologyException {
+	public SummaryModel(String confFile, String relFile) 
+		throws HasNoModelException, OntologyException {
+		
 		super(confFile);
 		
 		try {
-			relAndConcept = Yaml.loadType(new File(relFile), RelAndConceptSet.class);
+			prop = Yaml.loadType(new File(relFile), PropSet.class);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
