@@ -13,7 +13,7 @@ import com.hp.hpl.jena.rdf.model.HasNoModelException;
  *
  */
 public class PropSummaryModel extends OntoLoaded{
-	public PropSet oProp;
+	public PropSetBean oProp;
 
 	public PropSummaryModel(String confFile, String propFile) 
 		throws HasNoModelException, OntologyException {
@@ -21,7 +21,7 @@ public class PropSummaryModel extends OntoLoaded{
 		super(confFile);
 		
 		try {
-			oProp = Yaml.loadType(new File(propFile), PropSet.class);
+			oProp = Yaml.loadType(new File(propFile), PropSetBean.class);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

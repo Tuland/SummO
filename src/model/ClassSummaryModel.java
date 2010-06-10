@@ -9,7 +9,7 @@ import com.hp.hpl.jena.ontology.OntologyException;
 import com.hp.hpl.jena.rdf.model.HasNoModelException;
 
 public class ClassSummaryModel extends OntoLoaded {
-	public ClassSet oClass;
+	public ClassSetBean oClass;
 
 	public ClassSummaryModel(String confFile, String propFile) 
 		throws HasNoModelException, OntologyException {
@@ -17,7 +17,7 @@ public class ClassSummaryModel extends OntoLoaded {
 		super(confFile);
 		
 		try {
-			oClass = Yaml.loadType(new File(propFile), ClassSet.class);
+			oClass = Yaml.loadType(new File(propFile), ClassSetBean.class);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

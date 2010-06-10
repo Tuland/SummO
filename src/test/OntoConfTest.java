@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import static helper.ProtegeHelper.*;
 
-import model.OntoConf;
+import model.OntoConfBean;
 
 import org.junit.Test;
 
@@ -22,13 +22,13 @@ public class OntoConfTest {
 	public void testProtegePreamble(){
 		String smns = "http://www.semanticweb.org/ontologies/smb";
 		
-		OntoConf onto = new OntoConf(PATH, NAME, EXT, BASE);
+		OntoConfBean onto = new OntoConfBean(PATH, NAME, EXT, BASE);
 		String pStr = PROTEGE_SM + " " +
 						Q_MARK + PROTEGE_SMNS + Q_MARK + "\n" +
 						"base " + Q_MARK + PROTEGE_TNS + Q_MARK ;
 		String correctStr = Starter.SUMMARY_MODEL + " " +
 							Q_MARK + smns + Q_MARK + "\n" +
-							"base " + Q_MARK + onto.nameSpace + Q_MARK;
+							"base " + Q_MARK + onto.getNameSpace() + Q_MARK;
 		
 		assertEquals(correctStr, onto.protegePreamble(smns, pStr));
 	}
@@ -37,36 +37,36 @@ public class OntoConfTest {
 	// Old test before the refactory
 	// Now buildPathAttributes is into the constructor
 	@Test
-	public void testBuildPathAttributes_slashIntoPath() {
+	public void testUpdateFields_slashIntoPath() {
 		String path_withSlash = "http://127.0.0.1/";
 		String path_withoutSlash = "http://127.0.0.1";
 		
 		String correctPath = "http://127.0.0.1/onto.owl";
 		
 		// With slash 
-		OntoConf onto1 = new OntoConf(path_withSlash, NAME, EXT, "");
-		assertEquals(correctPath, onto1.url);
+		OntoConfBean onto1 = new OntoConfBean(path_withSlash, NAME, EXT, BASE);
+		assertEquals(correctPath, onto1.getUrl());
 		// Whithout slash
-		OntoConf onto2 = new OntoConf(path_withoutSlash, NAME, EXT, "");
-		assertEquals(correctPath, onto2.url);
+		OntoConfBean onto2 = new OntoConfBean(path_withoutSlash, NAME, EXT, BASE);
+		assertEquals(correctPath, onto2.getUrl());
 	}
 	
 	// Old test before the refactory
-	// Now buildPathAttributes is into the constructor
+	// Now UpdateFields is into the constructor
 	@Test
-	public void testBuildPathAttributes_extensionIntoPath() {
+	public void testUpdateFields_extensionIntoPath() {
 		String name_withoutExtension = "onto";
 		String name_withExtension = "onto.owl";
 		
 		String correctPath = "http://127.0.0.1/onto.owl";
 		
 		// Without extenesion
-		OntoConf onto1 = new OntoConf(PATH, name_withoutExtension, EXT, "");
-		assertEquals(correctPath, onto1.url);
+		OntoConfBean onto1 = new OntoConfBean(PATH, name_withoutExtension, EXT, BASE);
+		assertEquals(correctPath, onto1.getUrl());
 		// System.out.println(onto1.url);
 		// With extenesion
-		OntoConf onto2 = new OntoConf(PATH, name_withExtension, EXT, "");
-		assertEquals(correctPath, onto2.url);
+		OntoConfBean onto2 = new OntoConfBean(PATH, name_withExtension, EXT, BASE);
+		assertEquals(correctPath, onto2.getUrl());
 	}
 
 }

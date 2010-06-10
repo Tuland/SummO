@@ -17,11 +17,19 @@ public class PathHelper {
 	 * @param b is the ontology base
 	 * @return correct base: final slash included
 	 */
-	public static String verifyBase(String base) {
-		if (! base.endsWith("/")) {
-			base = base + "/";
+	public static String verifyPath(String path) {
+		if (! path.endsWith("/")) {
+			path = path + "/";
 		}
-		return base;
+		return path;
+	}
+	
+	public static String buildNameSpace(String base){
+		return base + "#";
+	}
+	
+	public static String buildUrl(String path, String name){
+		return path + name;
 	}
 
 }

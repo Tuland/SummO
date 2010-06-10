@@ -6,6 +6,7 @@ import static controller.Starter.SUMMARY_MODEL;
 import static helper.ProtegeHelper.convertTags;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 
 import exception.PrefixesNotAvailable;
@@ -13,25 +14,32 @@ import exception.PrefixesNotAvailable;
 
 /**
  * @author tuland
- * This class provides general ontology infos. 
+ * This class (JavaBean) provides general ontology infos.
+ * Using YAML is necessary invoke updateFields after initialization
+ *  
  */
-public class OntoConf {
+public class OntoConfBean implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8127623103952332440L;
+
 	private static final String PROTEGE_INIT_FILE = "SupportFiles/protegeInit.txt";
 	
-	public String path;
-	public String name;
-	public String url;
-	public String ext;
-	public String nameSpace;
-	public String base;
+	private String path;
+	private String name;
+	private String url;
+	private String ext;
+	private String nameSpace;
+	private String base;
 	
 	
 	
 	/**
 	 * Constructor
 	 */
-	public OntoConf(){
+	public OntoConfBean(){
 		
 	}
 	
@@ -41,29 +49,29 @@ public class OntoConf {
 	 * @param baseStr is the base ontology
 	 * @param pathStr is the ontology path
 	 */
-	public OntoConf(String pathStr, 
+	public OntoConfBean(String pathStr, 
 					String nameStr, 
 					String extStr, 
 					String baseStr ){
 		this();
-		path = pathStr;
+		path = verifyPath(pathStr);
 		name = nameStr;
 		ext = extStr;
 		base = baseStr;
-		buildPathAttributes("");
+		updateFields("");
 	}
 	
 	
 	/**
-	 * Build path and nameSpace
+	 * This method recalculate the values of name, url, base and nameSpace
+	 * Using YAML is necessary invoke it after initialization
 	 * @param baseAddition is the addition to complete the base name
 	 */
-	public void buildPathAttributes(String nameAddition) {
-		path = verifyBase(path);
+	public void updateFields(String nameAddition) {
 		name = verifyName(name + nameAddition, ext);
-		url = buildPath(path, name);
-		nameSpace = buildNameSpace(url);
+		url = buildUrl(path, name);
 		base = base + nameAddition;
+		nameSpace = buildNameSpace(base);
 		
 		System.out.println("Url: " + url);
 		System.out.println("Base: " + base);
@@ -113,12 +121,47 @@ public class OntoConf {
 		return convertTags(protegeStr, SUMMARY_MODEL, summaryModelNS, nameSpace);
 	}
 	
-	private String buildPath(String base, String name){
-		return base + name;
+
+
+	public String getPath() {
+		return verifyPath(path);
 	}
-	
-	private String buildNameSpace(String path){
-		return path + "#";
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public String getExt() {
+		return ext;
+	}
+
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+
+	public String getNameSpace() {
+		return nameSpace;
+	}
+
+
+	public String getBase() {
+		return base;
+	}
+
+	public void setBase(String base) {
+		this.base = base;
 	}
 
 

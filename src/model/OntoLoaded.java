@@ -16,7 +16,7 @@ public class OntoLoaded extends OntoPack{
 			throw new HasNoModelException(ont); 
 		}
 		
-		loadOnt(conf.url);
+		loadOnt(conf.getUrl());
 		
 		if (ont == null) {
 			throw new OntologyException("Ontology is NULL");
@@ -29,7 +29,7 @@ public class OntoLoaded extends OntoPack{
 	 */
 	private void loadOnt(String url){
 		model.read(url, "RDF/XML");
-		ont = model.getOntology(conf.base);
+		ont = model.getOntology(conf.getBase());
 	}
 
 }

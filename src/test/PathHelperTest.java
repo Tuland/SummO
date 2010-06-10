@@ -17,10 +17,10 @@ public class PathHelperTest {
 	}
 
 	@Test
-	public void testVerifyBase_withoutSlash() {
-		String base_withSlash = "http://127.0.0.1/";
-		String base_withoutSlash = "http://127.0.0.1";
-		assertEquals(base_withSlash, verifyBase(base_withoutSlash));
+	public void testVerifyPath_withoutSlash() {
+		String path_withSlash = "http://127.0.0.1/";
+		String path_withoutSlash = "http://127.0.0.1";
+		assertEquals(path_withSlash, verifyPath(path_withoutSlash));
 	}
 
 

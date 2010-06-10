@@ -46,12 +46,12 @@ public class Translator {
 
 		
 		ontoToSumm = new OntoBuilded(SUMMARIZATION_CONF_FILE, fileName);
-		ontoToSumm.model.setNsPrefix(summModel.conf.name, summModel.conf.base);
+		ontoToSumm.model.setNsPrefix(summModel.conf.getName(), summModel.conf.getBase());
 		ontoToSumm.setOnt();
 		ontoToSumm.ont.addImport(summModel.ont);
 		/* Cosa metto al posto di Sum???? Controllare il file owl ---> Concept!!! 	
 		   - Cambiare eventualmente anche summClass */
-		ontoToSumm.summClass = ontoToSumm.model.createClass(summModel.model.getOntClass(summModel.conf.nameSpace + 
+		ontoToSumm.summClass = ontoToSumm.model.createClass(summModel.model.getOntClass(summModel.conf.getNameSpace() + 
 																						"Summ").toString());
 
 	}
@@ -66,9 +66,9 @@ public class Translator {
 		Individual subjectInd = ontoToSumm.getIndividual(subjectStr);
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
-		ObjectProperty dirRelProp = summModel.model.getObjectProperty(	summModel.conf.nameSpace + 
-																		summModel.oProp.directedRel );
-		OntProperty relationProp = ontoToSumm.model.createObjectProperty(	ontoToSumm.conf.nameSpace +
+		ObjectProperty dirRelProp = summModel.model.getObjectProperty(	summModel.conf.getNameSpace() + 
+																		summModel.oProp.getDirectedRel() );
+		OntProperty relationProp = ontoToSumm.model.createObjectProperty(	ontoToSumm.conf.getNameSpace() +
 																			propertyStr );
 		
 		dirRelProp.addSubProperty(relationProp);
@@ -84,8 +84,8 @@ public class Translator {
 		Individual subjectInd = ontoToSumm.getIndividual(subjectStr);
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
-		ObjectProperty generalizeProp = summModel.model.getObjectProperty(	summModel.conf.nameSpace + 
-																			summModel.oProp.generalizeRel );
+		ObjectProperty generalizeProp = summModel.model.getObjectProperty(	summModel.conf.getNameSpace() + 
+																			summModel.oProp.getGeneralizeRel() );
 		ontoToSumm.model.add(subjectInd, generalizeProp, objectInd);
 	}
 

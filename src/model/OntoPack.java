@@ -18,7 +18,7 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
  * - ontology (real content provided by Jena)
  */
 public class OntoPack {
-	public OntoConf conf;
+	public OntoConfBean conf;
 	public OntModel model;
 	public Ontology ont;
 		
@@ -52,13 +52,13 @@ public class OntoPack {
 		// YAML
 		// Read AERIA config to load the ontology
 		try {
-			conf = Yaml.loadType(new File(confFile), OntoConf.class);
+			conf = Yaml.loadType(new File(confFile), OntoConfBean.class);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		conf.buildPathAttributes(file);
+		conf.updateFields(file);
 	}
 	
 	private void setConf(String fileConf){

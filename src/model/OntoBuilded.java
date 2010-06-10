@@ -29,7 +29,7 @@ public class OntoBuilded extends OntoPack{
 		}
 		
 		writer = model.getWriter("RDF/XML-ABBREV");
-		writer.setProperty("xmlbase", conf.base);
+		writer.setProperty("xmlbase", conf.getBase());
 
 	}
 	
@@ -40,12 +40,12 @@ public class OntoBuilded extends OntoPack{
 		if (model == null) {
 			throw new HasNoModelException(ont);
 		}
-		ont = model.createOntology(conf.base);
+		ont = model.createOntology(conf.getBase());
 	}
 	
 	
 	public Individual getIndividual(String conceptStr) {
-		return model.getIndividual(conf.nameSpace + conceptStr);
+		return model.getIndividual(conf.getNameSpace() + conceptStr);
 	}
 
 }
