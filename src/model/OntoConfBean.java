@@ -2,7 +2,7 @@ package model;
 
 import static helper.IOHelper.readFileAsString;
 import static helper.PathHelper.*;
-import static controller.Starter.SUMMARY_MODEL;
+import static controller.Starter.PROP_SUMMARY_MODEL;
 import static helper.ProtegeHelper.convertTags;
 
 import java.io.IOException;
@@ -118,10 +118,9 @@ public class OntoConfBean implements Serializable {
 	 * @return a Protege preamble with correct namespaces 
 	 */
 	public String protegePreamble(String summaryModelNS, String protegeStr){
-		return convertTags(protegeStr, SUMMARY_MODEL, summaryModelNS, nameSpace);
+		return convertTags(protegeStr, PROP_SUMMARY_MODEL, summaryModelNS, nameSpace);
 	}
 	
-
 
 	public String getPath() {
 		return verifyPath(path);

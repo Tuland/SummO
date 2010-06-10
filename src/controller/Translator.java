@@ -4,8 +4,14 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.OntProperty;
 
+import model.ClassSummaryModel;
 import model.OntoBuilded;
 import model.PropSummaryModel;
+
+import static controller.Starter.CONF_PATH;
+import static controller.Starter.CONF_EXT;
+import static controller.Starter.PROP_SUMMARY_MODEL;
+import static controller.Starter.CLASS_SUMMARY_MODEL;
 
 /**
  * @author tuland
@@ -13,47 +19,39 @@ import model.PropSummaryModel;
  */
 public class Translator {
 	
-	private static final String CONF_PATH = "Conf/";
-	private static final String REL_CONF_PATH = "Conf/Rel/";
-	private static final String CONF_EXT = ".yml";
-	private static final String SUMMARY_MODEL_CONF_FILE = 	CONF_PATH + 
-															Starter.SUMMARY_MODEL + 
-															CONF_EXT;
 	private static final String SUMMARIZATION_CONF_FILE = 	CONF_PATH + 
 															"summarization" +
 															CONF_EXT;
-	
-	private static final String SUMMARY_MODEL_REL_FILE = 	REL_CONF_PATH +
-															Starter.SUMMARY_MODEL +
-															CONF_EXT;
 
-	private PropSummaryModel summModel;
 	private OntoBuilded ontoToSumm;
 
+	private PropSummaryModel propSM;
+	private ClassSummaryModel classSM;
 
-	public Translator(String fileName) {
-		summModel = new PropSummaryModel(SUMMARY_MODEL_CONF_FILE, SUMMARY_MODEL_REL_FILE);
+	public Translator(	String fileName, 
+						PropSummaryModel pSM, 
+						ClassSummaryModel cSM) {
+		
+		propSM = pSM;
+		classSM = cSM;
+		
 		// TODO
-		// Devo importare anche SKOS?
-		// - spostare i new SummaryModel in Starter
-		// - parametrizzare questo costruttore con aeria + skos
 		// - 2 tipi di costruttore: 
-		//		a) con tre parametri[fileName, SummaryModel, SupportSummaryModel]
+		//		a) con tre parametri[fileName, PropSummaryModel, ClassSummaryModel]
 		//		b) con due parametri[fileName, SuperSummaryModel]
 		//			- SuperAeria = Aeria + Skos  
-		// * E' possibile? Non so dove prendere concept e dove rel! Potrebbero provenire dalla stessa risorsa!
-		// * Quello che crea probblemi e' SOLO summary.summClass = summary.model.createClass ! --> usa SKOS non aeria
-
 		
 		ontoToSumm = new OntoBuilded(SUMMARIZATION_CONF_FILE, fileName);
-		ontoToSumm.model.setNsPrefix(summModel.conf.getName(), summModel.conf.getBase());
+
+		ontoToSumm.model.setNsPrefix(CLASS_SUMMARY_MODEL, classSM.conf.getNameSpace());
+		ontoToSumm.model.setNsPrefix(PROP_SUMMARY_MODEL, propSM.conf.getNameSpace());
 		ontoToSumm.setOnt();
-		ontoToSumm.ont.addImport(summModel.ont);
+		ontoToSumm.ont.addImport(classSM.ont);
+		ontoToSumm.ont.addImport(propSM.ont);
 		/* Cosa metto al posto di Sum???? Controllare il file owl ---> Concept!!! 	
 		   - Cambiare eventualmente anche summClass */
-		ontoToSumm.summClass = ontoToSumm.model.createClass(summModel.model.getOntClass(summModel.conf.getNameSpace() + 
-																						"Summ").toString());
-
+		ontoToSumm.conceptClass = ontoToSumm.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
+																							classSM.oClass.getConcept()).toString());
 	}
 	
 	/**
@@ -66,8 +64,8 @@ public class Translator {
 		Individual subjectInd = ontoToSumm.getIndividual(subjectStr);
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
-		ObjectProperty dirRelProp = summModel.model.getObjectProperty(	summModel.conf.getNameSpace() + 
-																		summModel.oProp.getDirectedRel() );
+		ObjectProperty dirRelProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
+																	propSM.oProp.getDirectedRel() );
 		OntProperty relationProp = ontoToSumm.model.createObjectProperty(	ontoToSumm.conf.getNameSpace() +
 																			propertyStr );
 		
@@ -84,8 +82,8 @@ public class Translator {
 		Individual subjectInd = ontoToSumm.getIndividual(subjectStr);
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
-		ObjectProperty generalizeProp = summModel.model.getObjectProperty(	summModel.conf.getNameSpace() + 
-																			summModel.oProp.getGeneralizeRel() );
+		ObjectProperty generalizeProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
+																		propSM.oProp.getGeneralizeRel() );
 		ontoToSumm.model.add(subjectInd, generalizeProp, objectInd);
 	}
 

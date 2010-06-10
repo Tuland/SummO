@@ -26,7 +26,7 @@ public class OntoConfTest {
 		String pStr = PROTEGE_SM + " " +
 						Q_MARK + PROTEGE_SMNS + Q_MARK + "\n" +
 						"base " + Q_MARK + PROTEGE_TNS + Q_MARK ;
-		String correctStr = Starter.SUMMARY_MODEL + " " +
+		String correctStr = Starter.PROP_SUMMARY_MODEL + " " +
 							Q_MARK + smns + Q_MARK + "\n" +
 							"base " + Q_MARK + onto.getNameSpace() + Q_MARK;
 		

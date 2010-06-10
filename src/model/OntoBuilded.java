@@ -13,7 +13,7 @@ import exception.PrefixesNotAvailable;
  */
 public class OntoBuilded extends OntoPack{
 	public RDFWriter writer;
-	public OntClass summClass;
+	public OntClass conceptClass;
 
 	public OntoBuilded(String confFile, String fileName) throws HasNoModelException {
 		super(confFile, fileName);
