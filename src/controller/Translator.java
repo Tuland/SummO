@@ -48,8 +48,7 @@ public class Translator {
 		ontoToSumm.setOnt();
 		ontoToSumm.ont.addImport(classSM.ont);
 		ontoToSumm.ont.addImport(propSM.ont);
-		/* Cosa metto al posto di Sum???? Controllare il file owl ---> Concept!!! 	
-		   - Cambiare eventualmente anche summClass */
+
 		ontoToSumm.conceptClass = ontoToSumm.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
 																							classSM.oClass.getConcept()).toString());
 	}
