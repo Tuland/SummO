@@ -5,7 +5,7 @@ import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.OntProperty;
 
 import model.OntoBuilded;
-import model.SummaryModel;
+import model.PropSummaryModel;
 
 /**
  * @author tuland
@@ -27,12 +27,12 @@ public class Translator {
 															Starter.SUMMARY_MODEL +
 															CONF_EXT;
 
-	private SummaryModel summModel;
+	private PropSummaryModel summModel;
 	private OntoBuilded ontoToSumm;
 
 
 	public Translator(String fileName) {
-		summModel = new SummaryModel(SUMMARY_MODEL_CONF_FILE, SUMMARY_MODEL_REL_FILE);
+		summModel = new PropSummaryModel(SUMMARY_MODEL_CONF_FILE, SUMMARY_MODEL_REL_FILE);
 		// TODO
 		// Devo importare anche SKOS?
 		// - spostare i new SummaryModel in Starter
@@ -67,7 +67,7 @@ public class Translator {
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
 		ObjectProperty dirRelProp = summModel.model.getObjectProperty(	summModel.conf.nameSpace + 
-																		summModel.prop.directedRel );
+																		summModel.oProp.directedRel );
 		OntProperty relationProp = ontoToSumm.model.createObjectProperty(	ontoToSumm.conf.nameSpace +
 																			propertyStr );
 		
@@ -85,7 +85,7 @@ public class Translator {
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
 		ObjectProperty generalizeProp = summModel.model.getObjectProperty(	summModel.conf.nameSpace + 
-																			summModel.prop.generalizeRel );
+																			summModel.oProp.generalizeRel );
 		ontoToSumm.model.add(subjectInd, generalizeProp, objectInd);
 	}
 

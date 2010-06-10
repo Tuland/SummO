@@ -5,6 +5,6 @@ package model;
  *
  */
 public class PropAndClassSet {
-
 	
 }
+
