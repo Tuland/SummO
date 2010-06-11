@@ -108,10 +108,17 @@ public class OntoBuilded extends OntoPack{
  	 	} 
  	}
  	
+ 	/**
+ 	 * Save the ontology in a file (defined in the configuration file)
+ 	 */
  	public void saveFile(){
  		saveFile(gConf.getOutputPath() + conf.getName());
  	}
  	
+ 	/**
+ 	 * Save the ontology in a file 
+ 	 * @param fileStr is a string representation of the file address used to save
+ 	 */
  	public void saveFile(String fileStr){
  		OutputStream out = null;
  		try {

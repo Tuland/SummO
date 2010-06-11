@@ -16,8 +16,8 @@ public class PropSetBean implements Serializable {
 	}
 	
 	public PropSetBean(	String directedRelStr, 
-					String interGeneralizeRelStr, 
-					String generalizeRelStr) {
+						String interGeneralizeRelStr, 
+						String generalizeRelStr) {
 		this();
 		directedRel = directedRelStr;
 		interGeneralizeRel = interGeneralizeRelStr;

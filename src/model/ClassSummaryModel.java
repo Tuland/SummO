@@ -13,6 +13,11 @@ import static controller.Starter.gConf;
 public class ClassSummaryModel extends OntoLoaded {
 	public ClassSetBean oClass;
 
+	/**
+	 * @param confFile is the configuration to initialize this summary mode 
+	 * @throws HasNoModelException
+	 * @throws OntologyException
+	 */
 	public ClassSummaryModel(String confFile) 
 		throws HasNoModelException, OntologyException {
 		

@@ -34,11 +34,6 @@ public class OntoConfBean implements Serializable {
 	private String nameSpace;
 	private String base;
 	
-	
-	
-	/**
-	 * Constructor
-	 */
 	public OntoConfBean(){
 		
 	}

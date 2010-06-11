@@ -17,6 +17,11 @@ import static controller.Starter.gConf;
 public class PropSummaryModel extends OntoLoaded{
 	public PropSetBean oProp;
 
+	/**
+	 * @param confFile is the configuration file to initialize this summary mode
+	 * @throws HasNoModelException
+	 * @throws OntologyException
+	 */
 	public PropSummaryModel(String confFile) 
 		throws HasNoModelException, OntologyException {
 		

@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import org.ho.yaml.Yaml;
 
 import model.ClassSummaryModel;
-import model.OntoConfBean;
 import model.PropSummaryModel;
 
 

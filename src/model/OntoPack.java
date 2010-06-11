@@ -23,8 +23,8 @@ public class OntoPack {
 	public Ontology ont;
 		
 	/**
-	 * Load an existing ontology.
-	 * @param confFile is the configuration file path. This file must be a YAML file.
+	 * Load an existing ontology
+	 * @param confFile is the configuration file path. This file must be a YAML file
 	 */
 	public OntoPack(String confFile) {
 		System.out.println("** LOADING **");
@@ -34,8 +34,8 @@ public class OntoPack {
 	
 	/**
 	 * Create an ontology
-	 * @param fileName is the ontology name.
-	 * @param confFile is the configuration file path. This file must be a YAML file.
+	 * @param fileName is the ontology name
+	 * @param confFile is the configuration file path. This file must be a YAML file
 	 */
 	public OntoPack(String confFile, String fileName) {
 		System.out.println("** BUILDING **");
@@ -45,10 +45,11 @@ public class OntoPack {
 	
 	
 	/**
-	 * Build general ontology infos.
-	 * @param file is the configuration file path. This file must be a YAML file.
+	 * Build general ontology infos
+	 * @param confFile is the configuration file path. This file must be a YAML file
+	 * @param fileName is the name of the ontology file to translate (if there's no one use an empty string) 
 	 */
-	private void setConf(String confFile, String file ){
+	private void setConf(String confFile, String fileName ){
 		// YAML
 		// Read AERIA config to load the ontology
 		try {
@@ -58,15 +59,19 @@ public class OntoPack {
 			e.printStackTrace();
 		}
 
-		conf.updateFields(file);
-	}
-	
-	private void setConf(String fileConf){
-		setConf(fileConf, "" );
+		conf.updateFields(fileName);
 	}
 	
 	/**
-	 * Build the ontology model.
+	 * Build general ontology infos
+	 * @param confFile is the configuration file path. This file must be a YAML file
+	 */
+	private void setConf(String confFile){
+		setConf(confFile, "" );
+	}
+	
+	/**
+	 * Build the ontology model
 	 */
 	private void setModel(){
 		model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);

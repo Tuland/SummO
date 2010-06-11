@@ -21,6 +21,13 @@ public class Translator {
 	private PropSummaryModel propSM;
 	private ClassSummaryModel classSM;
 	
+	/**
+	 * @param fileName is the file name of ontology to translate  
+	 * @param pSM is a PropSummaryModel instance (ontology mediator in the translation) 
+	 * @param PropSMStr is a string that identifies the PropSummaryModel instance
+	 * @param cSM is a ClassSummaryModel instance (ontology mediator in the translation)
+	 * @param ClassSMStr is a string that identifies the ClassSummaryModel instance
+	 */
 	public Translator(	String fileName, 
 						PropSummaryModel pSM, 
 						String PropSMStr, 
@@ -49,6 +56,11 @@ public class Translator {
 		
 	}
 
+	/**
+	 * @param fileName is the file name of ontology to translate
+	 * @param pSM is a PropSummaryModel instance (ontology mediator in the translation) 
+	 * @param cSM is a ClassSummaryModel instance (ontology mediator in the translation)
+	 */
 	public Translator(	String fileName, 
 						PropSummaryModel pSM, 
 						ClassSummaryModel cSM) {
