@@ -1,6 +1,12 @@
 package controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import org.ho.yaml.Yaml;
+
 import model.ClassSummaryModel;
+import model.OntoConfBean;
 import model.PropSummaryModel;
 
 
@@ -10,41 +16,23 @@ import model.PropSummaryModel;
  */
 public class Starter {
 	
-	public static final String CONF_PATH = "Conf/";
-	private static final String FIELD_CONF_PATH = "Conf/Rel/";
-	
-	
-	public static final String PROP_SUMMARY_MODEL = "aeria";
-	public static final String CLASS_SUMMARY_MODEL = "skos";
-	
-	public static final String CONF_EXT = ".yml";
-	
-	private static final String PROP_SM_CONF_FILE = CONF_PATH + 
-													PROP_SUMMARY_MODEL + 
-													CONF_EXT;
-	
-	private static final String PROP_SM_FIELD_FILE = 	FIELD_CONF_PATH +
-														PROP_SUMMARY_MODEL +
-														CONF_EXT;
+	public static final String GENERAL_CONF_FILE = "Conf/conf.yml";
+	public static ConfBean gConf;
 
 	
-	private static final String CLASS_SM_CONF_FILE = 	CONF_PATH + 
-														CLASS_SUMMARY_MODEL + 
-														CONF_EXT;
-
-	private static final String CLASS_SM_FIELD_FILE = 	FIELD_CONF_PATH +
-														CLASS_SUMMARY_MODEL +
-														CONF_EXT;
-	
-
-
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		try {
+			gConf = Yaml.loadType(new File(GENERAL_CONF_FILE), ConfBean.class);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		PropSummaryModel propSM = new PropSummaryModel(PROP_SM_CONF_FILE, PROP_SM_FIELD_FILE);
-		ClassSummaryModel classSM = new ClassSummaryModel(CLASS_SM_CONF_FILE, CLASS_SM_FIELD_FILE);
+		PropSummaryModel propSM = new PropSummaryModel();
+		ClassSummaryModel classSM = new ClassSummaryModel();
 
 		// TODO QUI NON VA PASSATO UN SOLO FILE MA UNA LISTA DI FILE
 		Translator translator = new Translator("prova.owl", propSM, classSM);

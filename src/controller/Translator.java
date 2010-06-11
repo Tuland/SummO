@@ -8,29 +8,24 @@ import model.ClassSummaryModel;
 import model.OntoBuilded;
 import model.PropSummaryModel;
 
-import static controller.Starter.CONF_PATH;
-import static controller.Starter.CONF_EXT;
-import static controller.Starter.PROP_SUMMARY_MODEL;
-import static controller.Starter.CLASS_SUMMARY_MODEL;
+import static controller.Starter.gConf;
 
 /**
  * @author tuland
  *
  */
 public class Translator {
-	
-	private static final String SUMMARIZATION_CONF_FILE = 	CONF_PATH + 
-															"summarization" +
-															CONF_EXT;
 
 	private OntoBuilded ontoToSumm;
 
 	private PropSummaryModel propSM;
 	private ClassSummaryModel classSM;
-
+	
 	public Translator(	String fileName, 
 						PropSummaryModel pSM, 
-						ClassSummaryModel cSM) {
+						String PropSMStr, 
+						ClassSummaryModel cSM, 
+						String ClassSMStr) {
 		
 		propSM = pSM;
 		classSM = cSM;
@@ -41,16 +36,28 @@ public class Translator {
 		//		b) con due parametri[fileName, SuperSummaryModel]
 		//			- SuperAeria = Aeria + Skos  
 		
-		ontoToSumm = new OntoBuilded(SUMMARIZATION_CONF_FILE, fileName);
+		ontoToSumm = new OntoBuilded(gConf.getSummConfFile(), fileName);
 
-		ontoToSumm.model.setNsPrefix(CLASS_SUMMARY_MODEL, classSM.conf.getNameSpace());
-		ontoToSumm.model.setNsPrefix(PROP_SUMMARY_MODEL, propSM.conf.getNameSpace());
+		ontoToSumm.model.setNsPrefix(ClassSMStr, classSM.conf.getNameSpace());
+		ontoToSumm.model.setNsPrefix(PropSMStr, propSM.conf.getNameSpace());
 		ontoToSumm.setOnt();
 		ontoToSumm.ont.addImport(classSM.ont);
 		ontoToSumm.ont.addImport(propSM.ont);
 
 		ontoToSumm.conceptClass = ontoToSumm.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
 																							classSM.oClass.getConcept()).toString());
+		
+	}
+
+	public Translator(	String fileName, 
+						PropSummaryModel pSM, 
+						ClassSummaryModel cSM) {
+		this(	fileName, 
+				pSM, 
+				gConf.getPropSummaryModel(), 
+				cSM, 
+				gConf.getClassSummaryModel());
+
 	}
 	
 	/**

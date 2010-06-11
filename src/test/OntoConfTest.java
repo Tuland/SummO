@@ -7,8 +7,6 @@ import model.OntoConfBean;
 
 import org.junit.Test;
 
-import controller.Starter;
-
 
 public class OntoConfTest {
 	private static final String EXT = "owl";
@@ -20,17 +18,19 @@ public class OntoConfTest {
 	
 	@Test
 	public void testProtegePreamble(){
+		
 		String smns = "http://www.semanticweb.org/ontologies/smb";
+		String prefixPropSM = "aeria";
 		
 		OntoConfBean onto = new OntoConfBean(PATH, NAME, EXT, BASE);
 		String pStr = PROTEGE_SM + " " +
 						Q_MARK + PROTEGE_SMNS + Q_MARK + "\n" +
 						"base " + Q_MARK + PROTEGE_TNS + Q_MARK ;
-		String correctStr = Starter.PROP_SUMMARY_MODEL + " " +
+		String correctStr = prefixPropSM + " " +
 							Q_MARK + smns + Q_MARK + "\n" +
 							"base " + Q_MARK + onto.getNameSpace() + Q_MARK;
 		
-		assertEquals(correctStr, onto.protegePreamble(smns, pStr));
+		assertEquals(correctStr, onto.protegePreamble(smns, pStr, prefixPropSM));
 	}
 	
 	

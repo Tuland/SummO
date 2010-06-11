@@ -1,5 +1,10 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.rdf.model.HasNoModelException;
@@ -11,6 +16,9 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import exception.PrefixesNotAvailable;
+
+
+import static controller.Starter.gConf;
 
 /**
  * @author tuland
@@ -98,6 +106,29 @@ public class OntoBuilded extends OntoPack{
  	 		    
  	 		System.out.println(" .");
  	 	} 
+ 	}
+ 	
+ 	public void saveFile(){
+ 		saveFile(gConf.getOutputPath() + conf.getName());
+ 	}
+ 	
+ 	public void saveFile(String fileStr){
+ 		OutputStream out = null;
+ 		try {
+			out = new FileOutputStream(fileStr);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.write(out, "RDF/XML-ABBREV", conf.getBase());
+		
+		try {
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
  	}
 	
 

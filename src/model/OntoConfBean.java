@@ -1,8 +1,8 @@
 package model;
 
+import static controller.Starter.gConf;
 import static helper.IOHelper.readFileAsString;
 import static helper.PathHelper.*;
-import static controller.Starter.PROP_SUMMARY_MODEL;
 import static helper.ProtegeHelper.convertTags;
 
 import java.io.IOException;
@@ -75,6 +75,7 @@ public class OntoConfBean implements Serializable {
 		
 		System.out.println("Url: " + url);
 		System.out.println("Base: " + base);
+
 	}
 	
 	/**
@@ -118,7 +119,19 @@ public class OntoConfBean implements Serializable {
 	 * @return a Protege preamble with correct namespaces 
 	 */
 	public String protegePreamble(String summaryModelNS, String protegeStr){
-		return convertTags(protegeStr, PROP_SUMMARY_MODEL, summaryModelNS, nameSpace);
+		return protegePreamble(summaryModelNS, protegeStr, gConf.getPropSummaryModel());
+	}
+	
+	
+	/**
+	 * @param summaryModelNS
+	 * @param protegeStr a Protege preamble string with internal system tags
+	 * @param prefixPropSM is a string representation of the prefix to assign to the (prop) summary model namespace
+	 * @see helper.ProtegeHelper for the tags
+	 * @return a Protege preamble with correct namespaces 
+	 */
+	public String protegePreamble(String summaryModelNS, String protegeStr, String prefixPropSM){
+		return convertTags(protegeStr, prefixPropSM, summaryModelNS, nameSpace);
 	}
 	
 
