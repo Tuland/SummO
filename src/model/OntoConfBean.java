@@ -70,7 +70,6 @@ public class OntoConfBean implements Serializable {
 		
 		System.out.println("Url: " + url);
 		System.out.println("Base: " + base);
-
 	}
 	
 	/**
@@ -170,6 +169,5 @@ public class OntoConfBean implements Serializable {
 	public void setBase(String base) {
 		this.base = base;
 	}
-
 
 }

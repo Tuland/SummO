@@ -53,7 +53,6 @@ public class Translator {
 
 		ontoToSumm.conceptClass = ontoToSumm.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
 																							classSM.oClass.getConcept()).toString());
-		
 	}
 
 	/**
@@ -104,7 +103,6 @@ public class Translator {
 																		propSM.oProp.getGeneralizeRel() );
 		ontoToSumm.model.add(subjectInd, generalizeProp, objectInd);
 	}
-
 
 
 }

@@ -41,3 +41,5 @@ public class PropSummaryModel extends OntoLoaded{
 	}
 
 }
+
+

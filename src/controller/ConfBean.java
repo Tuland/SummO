@@ -25,11 +25,8 @@ public class ConfBean implements Serializable{
 	private String summNameConfFile;
 	private String summConfFile;
 	
-	
-
 	public ConfBean() {
-		
-		
+			
 	}
 		
 
@@ -129,7 +126,6 @@ public class ConfBean implements Serializable{
 		return summConfFile;
 	}
 	
-	
 	private void buildConf(){
 		propSMConfFile = 	confPath + 
 							propSummaryModel + 
@@ -149,5 +145,4 @@ public class ConfBean implements Serializable{
 						confExt;
 	}
 	
-
 }

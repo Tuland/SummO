@@ -48,5 +48,4 @@ public class PropSetBean implements Serializable {
 		this.generalizeRel = generalizeRel;
 	}
 	
-
 }

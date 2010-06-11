@@ -77,5 +77,4 @@ public class OntoPack {
 		model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
 	}
 		
-
 }
