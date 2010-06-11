@@ -42,12 +42,11 @@ public class Starter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Inizializzare i summaryModel QUI
-		
-		// TODO QUI NON VA PASSATO UN SOLO FILE MA UNA LISTA DI FILE
+
 		PropSummaryModel propSM = new PropSummaryModel(PROP_SM_CONF_FILE, PROP_SM_FIELD_FILE);
 		ClassSummaryModel classSM = new ClassSummaryModel(CLASS_SM_CONF_FILE, CLASS_SM_FIELD_FILE);
 
+		// TODO QUI NON VA PASSATO UN SOLO FILE MA UNA LISTA DI FILE
 		Translator translator = new Translator("prova.owl", propSM, classSM);
 		
 	}
