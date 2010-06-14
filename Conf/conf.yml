@@ -1,9 +1,9 @@
 --- !controller.Conf
 confPath: Conf/
 confExt: .yml
-fieldConfPath: Conf/Fields/
+propConfPath: Conf/Prop/
+classConfPath: Conf/Class/
 outputPath: OntoOut/
 propSummaryModel: aeria
 classSummaryModel: skos
 summNameConfFile: summarization
-unifiedSummaryModel:
