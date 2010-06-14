@@ -6,3 +6,4 @@ outputPath: OntoOut/
 propSummaryModel: aeria
 classSummaryModel: skos
 summNameConfFile: summarization
+unifiedSummaryModel:

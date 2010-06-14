@@ -52,7 +52,7 @@ public class Translator {
 		ontoToSumm.ont.addImport(propSM.ont);
 
 		ontoToSumm.conceptClass = ontoToSumm.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
-																							classSM.oClass.getConcept()).toString());
+																							classSM.getOClass().getConcept()).toString());
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class Translator {
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
 		ObjectProperty dirRelProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
-																	propSM.oProp.getDirectedRel() );
+																	propSM.getOProp().getDirectedRel() );
 		OntProperty relationProp = ontoToSumm.model.createObjectProperty(	ontoToSumm.conf.getNameSpace() +
 																			propertyStr );
 		
@@ -100,7 +100,7 @@ public class Translator {
 		Individual objectInd = ontoToSumm.getIndividual(objectStr);
 		
 		ObjectProperty generalizeProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
-																		propSM.oProp.getGeneralizeRel() );
+																		propSM.getOProp().getGeneralizeRel() );
 		ontoToSumm.model.add(subjectInd, generalizeProp, objectInd);
 	}
 

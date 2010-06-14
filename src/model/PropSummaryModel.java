@@ -15,7 +15,7 @@ import static controller.Starter.gConf;
  *
  */
 public class PropSummaryModel extends OntoLoaded{
-	public PropSetBean oProp;
+	private PropSetBean oProp;
 
 	/**
 	 * @param confFile is the configuration file to initialize this summary mode
@@ -39,6 +39,11 @@ public class PropSummaryModel extends OntoLoaded{
 	public PropSummaryModel() {
 		this(gConf.getPropSMFieldFile());
 	}
+
+	public PropSetBean getOProp() {
+		return oProp;
+	}
+	
 
 }
 

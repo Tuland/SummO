@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.Serializable;
+import static helper.PathHelper.buildFileAddr;
 
 public class ConfBean implements Serializable{
 
@@ -15,12 +16,16 @@ public class ConfBean implements Serializable{
 	private String outputPath;
 	private String propSummaryModel;
 	private String classSummaryModel;
+	private String unifiedSummaryModel;
 	
 	private String propSMConfFile;
 	private String propSMFieldFile;
 	
 	private String classSMConfFile;
 	private String classSMFieldFile;
+	
+	private String unifiedSMFieldFile;
+	private String unifiedSMConfFile;
 	
 	private String summNameConfFile;
 	private String summConfFile;
@@ -119,6 +124,10 @@ public class ConfBean implements Serializable{
 		return classSMFieldFile;
 	}
 	
+	public String getUnifiedSMFieldFile() {
+		return unifiedSMFieldFile;
+	}
+	
 	public String getSummConfFile() {
 		if (summConfFile == null) {
 			buildConf();
@@ -126,23 +135,44 @@ public class ConfBean implements Serializable{
 		return summConfFile;
 	}
 	
-	private void buildConf(){
-		propSMConfFile = 	confPath + 
-							propSummaryModel + 
-							confExt;
-		propSMFieldFile = 	fieldConfPath + 
-							propSummaryModel + 
-							confExt;
-		
-		classSMConfFile = 	confPath + 
-							classSummaryModel + 
-							confExt;
-		classSMFieldFile = 	fieldConfPath + 
-							classSummaryModel + 
-							confExt;
-		summConfFile =  confPath +
-						summNameConfFile +
-						confExt;
+	public void setUnifiedSummaryModel(String unifiedSummaryModel) {
+		this.unifiedSummaryModel = unifiedSummaryModel;
 	}
+
+
+	public String getUnifiedSMConfFile() {
+		return unifiedSMConfFile;
+	}
+	
+	private void buildConf(){
+		propSMConfFile = 	buildFileAddr(	confPath, 
+											propSummaryModel, 
+											confExt);
+		propSMFieldFile = 	buildFileAddr(	fieldConfPath, 
+											propSummaryModel, 
+											confExt);
+		classSMConfFile = 	buildFileAddr(	confPath, 
+											classSummaryModel,
+											confExt);
+		classSMFieldFile = 	buildFileAddr(	fieldConfPath, 
+											classSummaryModel,			
+											confExt);
+		unifiedSMConfFile = buildFileAddr(	confPath, 
+											unifiedSummaryModel,			
+											confExt);
+		unifiedSMFieldFile = buildFileAddr(	fieldConfPath, 
+											unifiedSummaryModel,			
+											confExt);
+		summConfFile =  	buildFileAddr( 	confPath,
+											summNameConfFile,
+											confExt);
+	}
+	
+
+	public String getUnifiedSummaryModel() {
+		return unifiedSummaryModel;
+	}
+
+
 	
 }

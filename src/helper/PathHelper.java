@@ -14,14 +14,20 @@ public class PathHelper {
 	}
 	
 	/**
-	 * @param b is the ontology base
-	 * @return correct base: final slash included
+	 * @param path 
+	 * @return correct path: final slash included
 	 */
 	public static String verifyPath(String path) {
-		if (! path.endsWith("/")) {
-			path = path + "/";
-		}
-		return path;
+		return verifyEndString(path, "/");
+	}
+	
+	
+	/**
+	 * @param nameSpace
+	 * @return correct nameSpace: final # included
+	 */
+	public static String verifyNameSpace(String nameSpace){
+		return verifyEndString(nameSpace, "#");
 	}
 	
 	public static String buildNameSpace(String base){
@@ -30,6 +36,21 @@ public class PathHelper {
 	
 	public static String buildUrl(String path, String name){
 		return path + name;
+	}
+	
+	public static String buildFileAddr(String confPath, String name, String ext){
+		if (name != null){
+			return confPath + name + ext;
+		} else {
+			return null;
+		}
+	}
+	
+	private static String verifyEndString(String str, String end) {
+		if (! str.endsWith(end)) {
+			str = str + end;
+		}
+		return str;
 	}
 
 }
