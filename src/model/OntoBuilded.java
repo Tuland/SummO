@@ -19,6 +19,9 @@ import exception.PrefixesNotAvailable;
 
 
 import static controller.Starter.gConf;
+import static helper.ProtegeHelper.convertTags;
+import static helper.ProtegeHelper.PROTEGE_INIT_FILE;
+import static helper.IOHelper.readFileAsString;
 
 /**
  * @author tuland
@@ -109,25 +112,47 @@ public class OntoBuilded extends OntoPack{
  	}
  	
  	/**
+ 	 * @param summaryModelNS is the name space referred to the summary model
+ 	 * @see PropSummaryModel
+ 	 */
+ 	public void saveProtegeFile(String summaryModelNS) {
+ 		saveProtegeFile(defalultOutputFile(), summaryModelNS);
+ 	}
+ 	
+ 	/**
+ 	 * @param fileStr is a string representation of the file address used to save
+ 	 * @param summaryModelNS summaryModelNS is the name space referred to the summary model
+ 	 * @see PropSummaryModel
+ 	 */
+ 	public void saveProtegeFile(String fileStr, String summaryModelNS) {
+ 		String preamble = protegePreamble(summaryModelNS);
+ 		saveFile(fileStr, preamble);
+ 	}
+ 	
+ 	/**
  	 * Save the ontology in a file (defined in the configuration file)
  	 */
  	public void saveFile(){
- 		saveFile(gConf.getOutputPath() + conf.getName());
+ 		saveFile(defalultOutputFile(), "");
  	}
  	
  	/**
  	 * Save the ontology in a file 
  	 * @param fileStr is a string representation of the file address used to save
+ 	 * @param preamble is a preamble to insert at the top of the file
  	 */
- 	public void saveFile(String fileStr){
+ 	public void saveFile(String fileStr, String preamble){
  		OutputStream out = null;
  		try {
 			out = new FileOutputStream(fileStr);
+			out.write(preamble.getBytes());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 		model.write(out, "RDF/XML-ABBREV", conf.getBase());
 		
 		try {
@@ -137,5 +162,49 @@ public class OntoBuilded extends OntoPack{
 			e.printStackTrace();
 		}
  	}
+ 	
+	/**
+	 * @param summaryModelNS
+	 * @return a Protege preamble with correct namespaces 
+	 */
+	private String protegePreamble(String summaryModelNS){
+		String pp = null;
+		try {
+			pp = readFileAsString(PROTEGE_INIT_FILE);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return protegePreamble(summaryModelNS, pp);
+	}
+	
+	/**
+	 * @param summaryModelNS
+	 * @param protegeStr a Protege preamble string with internal system tags
+	 * @see helper.ProtegeHelper for the tags
+	 * @return a Protege preamble with correct namespaces 
+	 */
+	private String protegePreamble(String summaryModelNS, String protegeStr){
+		return protegePreamble(summaryModelNS, protegeStr, gConf.getPropSummaryModel());
+	}
+	
+	
+	/**
+	 * @param summaryModelNS
+	 * @param protegeStr a Protege preamble string with internal system tags
+	 * @param prefixPropSM is a string representation of the prefix to assign to the (prop) summary model namespace
+	 * @see helper.ProtegeHelper for the tags
+	 * @return a Protege preamble with correct namespaces 
+	 */
+	private String protegePreamble(String summaryModelNS, String protegeStr, String prefixPropSM){
+		return convertTags(protegeStr, prefixPropSM, summaryModelNS, conf.getNameSpace());
+	}
+	
+	/**
+	 * @return the address referred to the default output file
+	 */
+	private String defalultOutputFile() {
+		return gConf.getOutputPath()  + conf.getName();
+	}
 	
 }

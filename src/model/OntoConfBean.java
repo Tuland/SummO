@@ -1,11 +1,8 @@
 package model;
 
-import static controller.Starter.gConf;
-import static helper.IOHelper.readFileAsString;
-import static helper.PathHelper.*;
-import static helper.ProtegeHelper.convertTags;
 
-import java.io.IOException;
+import static helper.PathHelper.*;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -24,8 +21,6 @@ public class OntoConfBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8127623103952332440L;
-
-	private static final String PROTEGE_INIT_FILE = "SupportFiles/protegeInit.txt";
 	
 	private String path;
 	private String name;
@@ -89,43 +84,6 @@ public class OntoConfBean implements Serializable {
 		prefixes.put("base", base);
 		
 		return prefixes;
-	}
-	
-	/**
-	 * @param summaryModelNS
-	 * @return a Protege preamble with correct namespaces 
-	 */
-	public String protegePreamble(String summaryModelNS){
-		String pp = null;
-		try {
-			pp = readFileAsString(PROTEGE_INIT_FILE);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return protegePreamble(summaryModelNS, pp);
-	}
-	
-	/**
-	 * @param summaryModelNS
-	 * @param protegeStr a Protege preamble string with internal system tags
-	 * @see helper.ProtegeHelper for the tags
-	 * @return a Protege preamble with correct namespaces 
-	 */
-	public String protegePreamble(String summaryModelNS, String protegeStr){
-		return protegePreamble(summaryModelNS, protegeStr, gConf.getPropSummaryModel());
-	}
-	
-	
-	/**
-	 * @param summaryModelNS
-	 * @param protegeStr a Protege preamble string with internal system tags
-	 * @param prefixPropSM is a string representation of the prefix to assign to the (prop) summary model namespace
-	 * @see helper.ProtegeHelper for the tags
-	 * @return a Protege preamble with correct namespaces 
-	 */
-	public String protegePreamble(String summaryModelNS, String protegeStr, String prefixPropSM){
-		return convertTags(protegeStr, prefixPropSM, summaryModelNS, nameSpace);
 	}
 	
 

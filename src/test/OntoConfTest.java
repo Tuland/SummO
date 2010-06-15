@@ -1,7 +1,6 @@
 package test;
 
 import static org.junit.Assert.*;
-import static helper.ProtegeHelper.*;
 
 import model.OntoConfBean;
 
@@ -13,25 +12,6 @@ public class OntoConfTest {
 	private static final String PATH = "http://127.0.0.1/";
 	private static final String NAME = "onto";
 	private static final String BASE = "http://www.semanticweb.org/ontologies/base";
-	private static final String Q_MARK = "\"";
-	
-	
-	@Test
-	public void testProtegePreamble(){
-		
-		String smns = "http://www.semanticweb.org/ontologies/smb";
-		String prefixPropSM = "aeria";
-		
-		OntoConfBean onto = new OntoConfBean(PATH, NAME, EXT, BASE);
-		String pStr = PROTEGE_SM + " " +
-						Q_MARK + PROTEGE_SMNS + Q_MARK + "\n" +
-						"base " + Q_MARK + PROTEGE_TNS + Q_MARK ;
-		String correctStr = prefixPropSM + " " +
-							Q_MARK + smns + Q_MARK + "\n" +
-							"base " + Q_MARK + onto.getNameSpace() + Q_MARK;
-		
-		assertEquals(correctStr, onto.protegePreamble(smns, pStr, prefixPropSM));
-	}
 	
 	
 	// Old test before the refactory

@@ -4,11 +4,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class ProtegeHelper {
+	
+	public static final String PROTEGE_INIT_FILE = "SupportFiles/protegeInit.txt";
+	
 	public static final String PROTEGE_SM = "@summaryModel@";
 	public static final String PROTEGE_SMNS = "@summaryModelNS@";
 	public static final String PROTEGE_TNS = "@thisNS@";
 	
 	
+	/**
+	 * 
+	 * @param preamble is the protege preamble not converted yet
+	 * @param convMap is a mapping for the substitution
+	 * @return the preamble with the correct substitutions
+	 * @see PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
+	 */
 	public static String convertTags(String preamble, HashMap <String,String> convMap)  {
 		Iterator<String> convSetIterator = convMap.keySet().iterator();
 		String key;
@@ -26,6 +36,7 @@ public class ProtegeHelper {
 	 * @param summaryModelNS is the substitute of PROTEGE_SMNS
 	 * @param thisNS is the substitute of PROTEGE_TNS
 	 * @return the preamble with the correct substitutions
+	 * @see PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
 	 */
 	public static String convertTags(String preamble, String summaryModel, String summaryModelNS, String thisNS) {
 		HashMap<String, String> convMap = new HashMap<String, String>();

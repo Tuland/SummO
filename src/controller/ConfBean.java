@@ -136,6 +136,7 @@ public class ConfBean implements Serializable{
 		}
 		return summConfFile;
 	}
+
 	
 	
 	private void buildConf(){
@@ -155,5 +156,6 @@ public class ConfBean implements Serializable{
 											summNameConfFile,
 											confExt);
 	}
+
 	
 }

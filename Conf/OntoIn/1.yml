@@ -1,0 +1,5 @@
+--- !model.OntoConf
+path: http://127.0.0.1/~tuland/Ontologies/
+name: mantic_global
+ext: owl
+base: http://www.semanticweb.org/ontologies/2010/4/mantic_global.owl
