@@ -14,9 +14,9 @@ import static controller.Starter.gConf;
  * @author tuland
  *
  */
-public class Translator {
+public class Summarizator {
 
-	private OntoBuilded ontoToSumm;
+	private OntoBuilded ontoSummarized;
 
 	private PropSummaryModel propSM;
 	private ClassSummaryModel classSM;
@@ -28,7 +28,7 @@ public class Translator {
 	 * @param cSM is a ClassSummaryModel instance (ontology mediator in the translation)
 	 * @param ClassSMStr is a string that identifies the ClassSummaryModel instance
 	 */
-	public Translator(	String fileName, 
+	public Summarizator(	String fileName, 
 						PropSummaryModel pSM, 
 						String PropSMStr, 
 						ClassSummaryModel cSM, 
@@ -43,15 +43,15 @@ public class Translator {
 		//		b) con due parametri[fileName, SuperSummaryModel]
 		//			- SuperAeria = Aeria + Skos  
 		
-		ontoToSumm = new OntoBuilded(gConf.getSummConfFile(), fileName);
+		ontoSummarized = new OntoBuilded(gConf.getSummConfFile(), fileName);
 
-		ontoToSumm.model.setNsPrefix(ClassSMStr, classSM.conf.getNameSpace());
-		ontoToSumm.model.setNsPrefix(PropSMStr, propSM.conf.getNameSpace());
-		ontoToSumm.setOnt();
-		ontoToSumm.ont.addImport(classSM.ont);
-		ontoToSumm.ont.addImport(propSM.ont);
+		ontoSummarized.model.setNsPrefix(ClassSMStr, classSM.conf.getNameSpace());
+		ontoSummarized.model.setNsPrefix(PropSMStr, propSM.conf.getNameSpace());
+		ontoSummarized.setOnt();
+		ontoSummarized.ont.addImport(classSM.ont);
+		ontoSummarized.ont.addImport(propSM.ont);
 
-		ontoToSumm.conceptClass = ontoToSumm.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
+		ontoSummarized.conceptClass = ontoSummarized.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
 																							classSM.getOClass().getConcept()).toString());
 	}
 
@@ -60,7 +60,7 @@ public class Translator {
 	 * @param pSM is a PropSummaryModel instance (ontology mediator in the translation) 
 	 * @param cSM is a ClassSummaryModel instance (ontology mediator in the translation)
 	 */
-	public Translator(	String fileName, 
+	public Summarizator(	String fileName, 
 						PropSummaryModel pSM, 
 						ClassSummaryModel cSM) {
 		this(	fileName, 
@@ -78,16 +78,16 @@ public class Translator {
 	 * @param objectStr is the property of the statement
 	 */
 	public void writeTripleDirRel(String subjectStr, String propertyStr, String objectStr) {
-		Individual subjectInd = ontoToSumm.getIndividual(subjectStr);
-		Individual objectInd = ontoToSumm.getIndividual(objectStr);
+		Individual subjectInd = ontoSummarized.getIndividual(subjectStr);
+		Individual objectInd = ontoSummarized.getIndividual(objectStr);
 		
 		ObjectProperty dirRelProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
 																	propSM.getOProp().getDirectedRel() );
-		OntProperty relationProp = ontoToSumm.model.createObjectProperty(	ontoToSumm.conf.getNameSpace() +
+		OntProperty relationProp = ontoSummarized.model.createObjectProperty(	ontoSummarized.conf.getNameSpace() +
 																			propertyStr );
 		
 		dirRelProp.addSubProperty(relationProp);
-		ontoToSumm.model.add(subjectInd, relationProp, objectInd);
+		ontoSummarized.model.add(subjectInd, relationProp, objectInd);
 	}
 	
 	/**
@@ -96,12 +96,22 @@ public class Translator {
 	 * @param objectStr is the subject of the statement
 	 */
 	public void writeTripleGeneralizeRel(String subjectStr, String objectStr){
-		Individual subjectInd = ontoToSumm.getIndividual(subjectStr);
-		Individual objectInd = ontoToSumm.getIndividual(objectStr);
+		Individual subjectInd = ontoSummarized.getIndividual(subjectStr);
+		Individual objectInd = ontoSummarized.getIndividual(objectStr);
 		
 		ObjectProperty generalizeProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
 																		propSM.getOProp().getGeneralizeRel() );
-		ontoToSumm.model.add(subjectInd, generalizeProp, objectInd);
+		ontoSummarized.model.add(subjectInd, generalizeProp, objectInd);
+		
+		 
+	}
+
+	public OntoBuilded getOntoSummarized() {
+		return ontoSummarized;
+	}
+	
+	public void saveOntoSummarized(){
+		ontoSummarized.saveProtegeFile(propSM.conf.getNameSpace());
 	}
 
 

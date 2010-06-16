@@ -6,8 +6,10 @@ import java.io.FileNotFoundException;
 import org.ho.yaml.Yaml;
 
 import model.ClassSummaryModel;
+import model.OntoLoaded;
 import model.PropSummaryModel;
 
+import static helper.IOHelper.listYamlFiles;
 
 /**
  * @author tuland
@@ -23,19 +25,27 @@ public class Starter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		// Load the configuration file
 		try {
 			gConf = Yaml.loadType(new File(GENERAL_CONF_FILE), ConfBean.class);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		// Load 2 summary model (relations -> aeria, concept -> skos)
 		PropSummaryModel propSM = new PropSummaryModel();
 		ClassSummaryModel classSM = new ClassSummaryModel();
-
-		// TODO QUI NON VA PASSATO UN SOLO FILE MA UNA LISTA DI FILE
-		Translator translator = new Translator("prova.owl", propSM, classSM);
 		
+		// Iterate ontologies to inspect
+		OntoLoaded ontoL = null;
+		for (File cFile : listYamlFiles(gConf.getInputConfPath())) {
+			ontoL = new OntoLoaded(cFile.toString());
+			//ontoL.model.
+			Summarizator translator = new Summarizator(ontoL.conf.getName(), propSM, classSM);
+		}
+			
 	}
 
 

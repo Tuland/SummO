@@ -40,7 +40,7 @@ public class PathHelper {
 	
 	public static String buildFileAddr(String confPath, String name, String ext){
 		if (name != null){
-			return confPath + name + ext;
+			return confPath + name + "." + ext;
 		} else {
 			return null;
 		}

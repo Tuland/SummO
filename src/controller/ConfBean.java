@@ -10,11 +10,13 @@ public class ConfBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 2200179586991823121L;
 	
-	private String confPath;
 	private String confExt;
+	
+	private String confPath;
 	private String propConfPath;
 	private String classConfPath;
 	private String outputPath;
+	private String inputConfPath;
 	
 	private String propSummaryModel;
 	private String classSummaryModel;
@@ -72,6 +74,16 @@ public class ConfBean implements Serializable{
 	public void setOutputPath(String outputPath) {
 		this.outputPath = outputPath;
 	}
+	
+	public String getInputConfPath() {
+		return inputConfPath;
+	}
+
+
+	public void setInputConfPath(String inputConfPath) {
+		this.inputConfPath = inputConfPath;
+	}
+
 
 	public String getPropSummaryModel() {
 		return propSummaryModel;

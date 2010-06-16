@@ -17,6 +17,15 @@ public class IOHelper {
 	    f.read(buffer);
 	    return new String(buffer);
 	}
+	
+	/**
+	 * @param path is the string representation of a path
+	 * @return an array that storages yaml files included in the folder (path)    
+	 */
+	public static File[] listYamlFiles(String path){
+		File cDir = new File(path);
+		return cDir.listFiles(new YamlFilter());
+	}
 
 
 }
