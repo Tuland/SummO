@@ -14,7 +14,7 @@ public class ClassSummaryModel extends OntoLoaded {
 	private ClassSetBean oClass;
 
 	/**
-	 * @param confFile is the configuration file to initialize this summary mode 
+	 * @param confFile	a configuration file to initialize this summary mode 
 	 * @throws HasNoModelException
 	 * @throws OntologyException
 	 */

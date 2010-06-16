@@ -3,7 +3,8 @@ package helper;
 public class PathHelper {
 	
 	/**
-	 * @param n is the ontology name
+	 * @param name	an ontology name
+	 * @param ext	a file extension
 	 * @return correct name: extension included
 	 */
 	public static String verifyName(String name, String ext) {
@@ -14,7 +15,7 @@ public class PathHelper {
 	}
 	
 	/**
-	 * @param path 
+	 * @param path	a string representation of the path 
 	 * @return correct path: final slash included
 	 */
 	public static String verifyPath(String path) {
@@ -23,7 +24,7 @@ public class PathHelper {
 	
 	
 	/**
-	 * @param nameSpace
+	 * @param nameSpace	a name space (string)
 	 * @return correct nameSpace: final # included
 	 */
 	public static String verifyNameSpace(String nameSpace){

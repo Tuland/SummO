@@ -61,7 +61,7 @@ public class OntoBuilded extends OntoPack{
 	
 	
 	/**
-	 * @param individualStr is a string representation of the individual to get
+	 * @param individualStr	a string representation of the individual to get
 	 * @return a resource that represents an individual node in ontology model
 	 */
 	public Individual getIndividual(String individualStr) {
@@ -77,8 +77,8 @@ public class OntoBuilded extends OntoPack{
 	}
 	
 	/**
-	 * @param individualStr is a string representation of the individual to write in
-	 * @param indNameSpaceStr is a string representation of the individual to write in
+	 * @param individualStr		a string representation of the individual to write in
+	 * @param indNameSpaceStr	a string representation of the individual to write in
 	 * @return a resource that represents an individual node in this model
 	 */
 	public Individual writeIndividual(String individualStr, String indNameSpaceStr){
@@ -112,7 +112,7 @@ public class OntoBuilded extends OntoPack{
  	}
  	
  	/**
- 	 * @param summaryModelNS is the name space referred to the summary model
+ 	 * @param summaryModelNS	a name space referred to the summary model
  	 * @see PropSummaryModel
  	 */
  	public void saveProtegeFile(String summaryModelNS) {
@@ -120,8 +120,8 @@ public class OntoBuilded extends OntoPack{
  	}
  	
  	/**
- 	 * @param fileStr is a string representation of the file address used to save
- 	 * @param summaryModelNS summaryModelNS is the name space referred to the summary model
+ 	 * @param fileStr			a string representation of the file address used to save
+ 	 * @param summaryModelNS	the name space referred to the summary model
  	 * @see PropSummaryModel
  	 */
  	public void saveProtegeFile(String fileStr, String summaryModelNS) {
@@ -138,8 +138,8 @@ public class OntoBuilded extends OntoPack{
  	
  	/**
  	 * Save the ontology in a file 
- 	 * @param fileStr is a string representation of the file address used to save
- 	 * @param preamble is a preamble to insert at the top of the file
+ 	 * @param fileStr	a string representation of the file address used to save
+ 	 * @param preamble	a preamble to insert at the top of the file
  	 */
  	public void saveFile(String fileStr, String preamble){
  		OutputStream out = null;
@@ -164,7 +164,7 @@ public class OntoBuilded extends OntoPack{
  	}
  	
 	/**
-	 * @param summaryModelNS
+	 * @param summaryModelNS	the name space of the summary model
 	 * @return a Protege preamble with correct namespaces 
 	 */
 	private String protegePreamble(String summaryModelNS){
@@ -179,8 +179,8 @@ public class OntoBuilded extends OntoPack{
 	}
 	
 	/**
-	 * @param summaryModelNS
-	 * @param protegeStr a Protege preamble string with internal system tags
+	 * @param summaryModelNS	the name space of the summary model
+	 * @param protegeStr		a Protege preamble string with internal system tags
 	 * @see helper.ProtegeHelper for the tags
 	 * @return a Protege preamble with correct namespaces 
 	 */
@@ -190,9 +190,9 @@ public class OntoBuilded extends OntoPack{
 	
 	
 	/**
-	 * @param summaryModelNS
-	 * @param protegeStr a Protege preamble string with internal system tags
-	 * @param prefixPropSM is a string representation of the prefix to assign to the (prop) summary model namespace
+	 * @param summaryModelNS	the name space of the summary model
+	 * @param protegeStr 		a Protege preamble string with internal system tags
+	 * @param prefixPropSM		a string representation of the prefix to assign to the (prop) summary model namespace
 	 * @see helper.ProtegeHelper for the tags
 	 * @return a Protege preamble with correct namespaces 
 	 */

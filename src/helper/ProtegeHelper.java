@@ -14,8 +14,8 @@ public class ProtegeHelper {
 	
 	/**
 	 * 
-	 * @param preamble is the protege preamble not converted yet
-	 * @param convMap is a mapping for the substitution
+	 * @param preamble	a the protege preamble not converted yet
+	 * @param convMap	a mapping for the substitution
 	 * @return the preamble with the correct substitutions
 	 * @see PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
 	 */
@@ -31,10 +31,10 @@ public class ProtegeHelper {
 	
 	
 	/**
-	 * @param preamble is the protege preamble not converted yet
-	 * @param summaryModel is the substitute of PROTEGE_SM
-	 * @param summaryModelNS is the substitute of PROTEGE_SMNS
-	 * @param thisNS is the substitute of PROTEGE_TNS
+	 * @param preamble			a protege preamble not converted yet
+	 * @param summaryModel		a substitute of PROTEGE_SM
+	 * @param summaryModelNS	a substitute of PROTEGE_SMNS
+	 * @param thisNS 			a substitute of PROTEGE_TNS
 	 * @return the preamble with the correct substitutions
 	 * @see PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
 	 */

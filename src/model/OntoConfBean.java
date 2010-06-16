@@ -34,10 +34,10 @@ public class OntoConfBean implements Serializable {
 	}
 	
 	/**
-	 * @param nameStr is the ontology name
-	 * @param extStr is the file extension
-	 * @param baseStr is the base ontology
-	 * @param pathStr is the ontology path
+	 * @param nameStr	an ontology name
+	 * @param extStr	a file extension
+	 * @param baseStr	a base ontology
+	 * @param pathStr	an ontology path
 	 */
 	public OntoConfBean(String pathStr, 
 					String nameStr, 
@@ -55,7 +55,7 @@ public class OntoConfBean implements Serializable {
 	/**
 	 * This method recalculate the values of name, url, base and nameSpace
 	 * Using YAML is necessary invoke it after initialization
-	 * @param baseAddition is the addition to complete the base name
+	 * @param baseAddition	an addition (string) to complete the base name
 	 */
 	public void updateFields(String nameAddition) {
 		name = verifyName(name + nameAddition, ext);

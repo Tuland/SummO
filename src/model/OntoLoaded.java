@@ -25,7 +25,7 @@ public class OntoLoaded extends OntoPack{
 	
 	/**
 	 * Build the ontology.
-	 * @param url is a string representation of the url to read from
+	 * @param url	a string representation of the url to read from
 	 */
 	private void loadOnt(String url){
 		model.read(url, "RDF/XML");

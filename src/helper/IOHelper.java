@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 public class IOHelper {
 	
 	/**
-	 * @param filePath is a path string. It refers to the file that will be converted.  
+	 * @param filePath	a path string. It refers to the file that will be converted.  
 	 * @return the file content in a string
 	 * @throws java.io.IOException
 	 */
@@ -19,7 +19,7 @@ public class IOHelper {
 	}
 	
 	/**
-	 * @param path is the string representation of a path
+	 * @param path	a string representation of a path
 	 * @return an array that storages yaml files included in the folder (path)    
 	 */
 	public static File[] listYamlFiles(String path){

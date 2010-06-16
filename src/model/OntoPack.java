@@ -24,7 +24,7 @@ public class OntoPack {
 		
 	/**
 	 * Load an existing ontology
-	 * @param confFile is the configuration file path. This file must be a YAML file
+	 * @param confFile	a configuration file path. This file must be a YAML file
 	 */
 	public OntoPack(String confFile) {
 		System.out.println("** LOADING **");
@@ -34,8 +34,8 @@ public class OntoPack {
 	
 	/**
 	 * Create an ontology
-	 * @param fileName is the ontology name
-	 * @param confFile is the configuration file path. This file must be a YAML file
+	 * @param fileName	a ontology name
+	 * @param confFile	a configuration file path. This file must be a YAML file
 	 */
 	public OntoPack(String confFile, String fileName) {
 		System.out.println("** BUILDING **");
@@ -46,8 +46,8 @@ public class OntoPack {
 	
 	/**
 	 * Build general ontology infos
-	 * @param confFile is the configuration file path. This file must be a YAML file
-	 * @param fileName is the name of the ontology file to translate (if there's no one use an empty string) 
+	 * @param confFile	a configuration file path. This file must be a YAML file
+	 * @param fileName	the name of the ontology file to translate (if there's no one use an empty string) 
 	 */
 	private void setConf(String confFile, String fileName ){
 		// YAML
@@ -64,7 +64,7 @@ public class OntoPack {
 	
 	/**
 	 * Build general ontology infos
-	 * @param confFile is the configuration file path. This file must be a YAML file
+	 * @param confFile	a configuration file path. This file must be a YAML file
 	 */
 	private void setConf(String confFile){
 		setConf(confFile, "" );

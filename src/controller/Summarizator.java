@@ -6,6 +6,7 @@ import com.hp.hpl.jena.ontology.OntProperty;
 
 import model.ClassSummaryModel;
 import model.OntoBuilded;
+import model.OntoLoaded;
 import model.PropSummaryModel;
 
 import static controller.Starter.gConf;
@@ -22,11 +23,11 @@ public class Summarizator {
 	private ClassSummaryModel classSM;
 	
 	/**
-	 * @param fileName is the file name of ontology to translate  
-	 * @param pSM is a PropSummaryModel instance (ontology mediator in the translation) 
-	 * @param PropSMStr is a string that identifies the PropSummaryModel instance
-	 * @param cSM is a ClassSummaryModel instance (ontology mediator in the translation)
-	 * @param ClassSMStr is a string that identifies the ClassSummaryModel instance
+	 * @param fileName 		the file name of ontology to translate  
+	 * @param pSM 			a PropSummaryModel instance (ontology mediator in the translation) 
+	 * @param PropSMStr 	a string that identifies the PropSummaryModel instance
+	 * @param cSM 			a ClassSummaryModel instance (ontology mediator in the translation)
+	 * @param ClassSMStr 	a string that identifies the ClassSummaryModel instance
 	 */
 	public Summarizator(	String fileName, 
 						PropSummaryModel pSM, 
@@ -56,9 +57,9 @@ public class Summarizator {
 	}
 
 	/**
-	 * @param fileName is the file name of ontology to translate
-	 * @param pSM is a PropSummaryModel instance (ontology mediator in the translation) 
-	 * @param cSM is a ClassSummaryModel instance (ontology mediator in the translation)
+	 * @param fileName 	the file name of ontology to translate
+	 * @param pSM 		a PropSummaryModel instance (ontology mediator in the translation) 
+	 * @param cSM 		a ClassSummaryModel instance (ontology mediator in the translation)
 	 */
 	public Summarizator(	String fileName, 
 						PropSummaryModel pSM, 
@@ -73,9 +74,9 @@ public class Summarizator {
 	
 	/**
 	 * Write a RDF statement with a direct relation
-	 * @param subjectStr is the subject of the statement 
-	 * @param propertyStr is the property of the statement
-	 * @param objectStr is the property of the statement
+	 * @param subjectStr 	the subject of the statement 
+	 * @param propertyStr	the property of the statement
+	 * @param objectStr 	the property of the statement
 	 */
 	public void writeTripleDirRel(String subjectStr, String propertyStr, String objectStr) {
 		Individual subjectInd = ontoSummarized.getIndividual(subjectStr);
@@ -92,8 +93,8 @@ public class Summarizator {
 	
 	/**
 	 * Write a RDF statement with a generalize relation
-	 * @param subjectStr is the subject of the statement
-	 * @param objectStr is the subject of the statement
+	 * @param subjectStr	the subject of the statement
+	 * @param objectStr		the subject of the statement
 	 */
 	public void writeTripleGeneralizeRel(String subjectStr, String objectStr){
 		Individual subjectInd = ontoSummarized.getIndividual(subjectStr);
@@ -106,12 +107,29 @@ public class Summarizator {
 		 
 	}
 
+	/**
+	 * @return ontology after (total/partial) summarization
+	 */
 	public OntoBuilded getOntoSummarized() {
 		return ontoSummarized;
 	}
 	
-	public void saveOntoSummarized(){
+	/**
+	 * Save the summarized ontology in a file (in the default location). This method apply the protege' preamble
+	 * @see ConfBean
+	 * @see OntoLoaded
+	 */
+	public void savePPOntoSummarized(){
 		ontoSummarized.saveProtegeFile(propSM.conf.getNameSpace());
+	}
+	
+	/**
+	 * Save the summarized ontology in a file (in the default location). This method doesn't apply the protege' preamble
+	 * @see ConfBean
+	 * @see OntoLoaded
+	 */
+	public void saveOntoSummarized(){
+		ontoSummarized.saveFile();
 	}
 
 
