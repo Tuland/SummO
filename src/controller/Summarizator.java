@@ -38,12 +38,6 @@ public class Summarizator {
 		propSM = pSM;
 		classSM = cSM;
 		
-		// TODO
-		// - 2 tipi di costruttore: 
-		//		a) con tre parametri[fileName, PropSummaryModel, ClassSummaryModel]
-		//		b) con due parametri[fileName, SuperSummaryModel]
-		//			- SuperAeria = Aeria + Skos  
-		
 		ontoSummarized = new OntoBuilded(gConf.getSummConfFile(), fileName);
 
 		ontoSummarized.model.setNsPrefix(ClassSMStr, classSM.conf.getNameSpace());
@@ -51,9 +45,18 @@ public class Summarizator {
 		ontoSummarized.setOnt();
 		ontoSummarized.ont.addImport(classSM.ont);
 		ontoSummarized.ont.addImport(propSM.ont);
-
+		
+		// TODO build a not verbose modality
+		/*
+		Protege' doesn't show individuals when the class is getted from aeria/skos
+		
+		ontoSummarized.conceptClass = classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
+																	classSM.getOClass().getConcept() );
+		*/
+		
 		ontoSummarized.conceptClass = ontoSummarized.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
-																							classSM.getOClass().getConcept()).toString());
+																									classSM.getOClass().getConcept()).toString());
+		
 	}
 
 	/**
@@ -79,15 +82,25 @@ public class Summarizator {
 	 * @param objectStr 	the property of the statement
 	 */
 	public void writeTripleDirRel(String subjectStr, String propertyStr, String objectStr) {
-		Individual subjectInd = ontoSummarized.getIndividual(subjectStr);
-		Individual objectInd = ontoSummarized.getIndividual(objectStr);
+		
+		Individual subjectInd = ontoSummarized.writeInd(subjectStr);
+		Individual objectInd = ontoSummarized.writeInd(objectStr);
+		
+		// Individual subjectInd = ontoSummarized.getInd(subjectStr);
+		// Individual objectInd = ontoSummarized.getInd(objectStr);
 		
 		ObjectProperty dirRelProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
 																	propSM.getOProp().getDirectedRel() );
 		OntProperty relationProp = ontoSummarized.model.createObjectProperty(	ontoSummarized.conf.getNameSpace() +
-																			propertyStr );
-		
+																				propertyStr );
 		dirRelProp.addSubProperty(relationProp);
+		
+		
+		if (subjectInd == null ) {
+			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		}
+		
+		
 		ontoSummarized.model.add(subjectInd, relationProp, objectInd);
 	}
 	
@@ -97,11 +110,12 @@ public class Summarizator {
 	 * @param objectStr		the subject of the statement
 	 */
 	public void writeTripleGeneralizeRel(String subjectStr, String objectStr){
-		Individual subjectInd = ontoSummarized.getIndividual(subjectStr);
-		Individual objectInd = ontoSummarized.getIndividual(objectStr);
+		Individual subjectInd = ontoSummarized.getInd(subjectStr);
+		Individual objectInd = ontoSummarized.getInd(objectStr);
 		
 		ObjectProperty generalizeProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
 																		propSM.getOProp().getGeneralizeRel() );
+		
 		ontoSummarized.model.add(subjectInd, generalizeProp, objectInd);
 		
 		 

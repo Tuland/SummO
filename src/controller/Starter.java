@@ -42,8 +42,14 @@ public class Starter {
 		OntoLoaded ontoL = null;
 		for (File cFile : listYamlFiles(gConf.getInputConfPath())) {
 			ontoL = new OntoLoaded(cFile.toString());
-			//ontoL.model.
-			Summarizator translator = new Summarizator(ontoL.conf.getName(), propSM, classSM);
+
+			Summarizator summ = new Summarizator(ontoL.conf.getName(), propSM, classSM);
+			
+			// summ.getOntoSummarized().writeInd("AltraCosa");
+			// summ.writeTripleDirRel("IlMioSoggetto", "LaMiaProprieta", "IlMioOggetto");
+			
+			summ.savePPOntoSummarized();
+			
 		}
 			
 	}

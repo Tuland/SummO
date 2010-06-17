@@ -1,5 +1,0 @@
---- !model.OntoConf
-path: http://127.0.0.1/~tuland/Ontologies/
-name: mantic_global_cut.0_0
-ext: owl
-base: http://www.semanticweb.org/ontologies/2010/4/mantic_global.owl

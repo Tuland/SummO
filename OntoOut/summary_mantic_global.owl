@@ -1,0 +1,42 @@
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY aeria "http://www.siti.disco.unimib.it/cmm/2010/aeria#" >
+    <!ENTITY base "http://www.semanticweb.org/ontologies/2010/0/summary_mantic_global.owl#" >
+]>
+
+
+<rdf:RDF
+    xmlns:aeria="http://www.siti.disco.unimib.it/cmm/2010/aeria#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:base="http://www.semanticweb.org/ontologies/2010/0/summary_mantic_global.owl"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.semanticweb.org/ontologies/2010/0/summary_mantic_global.owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.siti.disco.unimib.it/cmm/2010/aeria"/>
+    <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <owl:ObjectProperty rdf:ID="LaMiaProprietà">
+    <rdfs:subPropertyOf rdf:resource="http://www.siti.disco.unimib.it/cmm/2010/aeria#directedRelationship"/>
+  </owl:ObjectProperty>
+  <skos:Concept rdf:ID="AltraCosa2"/>
+  <skos:Concept rdf:ID="IlMioSoggetto">
+    <LaMiaProprietà>
+      <skos:Concept rdf:ID="altraCosa1"/>
+    </LaMiaProprietà>
+  </skos:Concept>
+  <skos:Concept rdf:ID="AltraCosa1">
+    <LaMiaProprietà>
+      <skos:Concept rdf:ID="IlMioOggetto"/>
+    </LaMiaProprietà>
+  </skos:Concept>
+  <skos:Concept rdf:ID="AltraCosa3"/>
+</rdf:RDF>

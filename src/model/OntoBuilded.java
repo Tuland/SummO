@@ -64,7 +64,8 @@ public class OntoBuilded extends OntoPack{
 	 * @param individualStr	a string representation of the individual to get
 	 * @return a resource that represents an individual node in ontology model
 	 */
-	public Individual getIndividual(String individualStr) {
+	public Individual getInd(String individualStr) {
+		System.out.println(conf.getNameSpace() + individualStr + "!!!!!!!!!!!!!!!!!!!!!!");
 		return model.getIndividual(conf.getNameSpace() + individualStr);
 	}
 	
@@ -72,7 +73,7 @@ public class OntoBuilded extends OntoPack{
 	 * @param individualStr is a string representation of the individual to write in
 	 * @return a resource that represents an Individual node in this model
 	 */
-	public Individual writeIndividual(String individualStr) {
+	public Individual writeInd(String individualStr) {
 		return conceptClass.createIndividual(conf.getNameSpace() + individualStr);
 	}
 	
@@ -81,7 +82,7 @@ public class OntoBuilded extends OntoPack{
 	 * @param indNameSpaceStr	a string representation of the individual to write in
 	 * @return a resource that represents an individual node in this model
 	 */
-	public Individual writeIndividual(String individualStr, String indNameSpaceStr){
+	public Individual writeInd(String individualStr, String indNameSpaceStr){
 		return conceptClass.createIndividual(indNameSpaceStr + individualStr);
 	}
 	

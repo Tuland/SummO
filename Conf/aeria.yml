@@ -2,5 +2,5 @@
 path: http://127.0.0.1/~tuland/Ontologies/
 name: aerdiaskos-lite
 ext: owl
-base: http://www.semanticweb.org/ontologies/2010/0/aerdiaskos.owl
+base: http://www.siti.disco.unimib.it/cmm/2010/aeria
 
