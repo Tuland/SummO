@@ -95,12 +95,6 @@ public class Summarizator {
 																				propertyStr );
 		dirRelProp.addSubProperty(relationProp);
 		
-		
-		if (subjectInd == null ) {
-			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-		}
-		
-		
 		ontoSummarized.model.add(subjectInd, relationProp, objectInd);
 	}
 	
