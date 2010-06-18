@@ -2,6 +2,11 @@ package model;
 
 import java.io.IOException;
 
+import viewer.DefaultOntoFormat;
+import viewer.EmbeddedOntoFormat;
+import viewer.OntoFormat;
+import viewer.OntoPrinter;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.rdf.model.HasNoModelException;
@@ -12,7 +17,6 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
-import controller.OntoPrinter;
 
 import exception.PrefixesNotAvailable;
 

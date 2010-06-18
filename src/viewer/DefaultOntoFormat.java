@@ -1,4 +1,4 @@
-package model;
+package viewer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
