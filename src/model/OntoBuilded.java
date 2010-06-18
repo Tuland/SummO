@@ -1,9 +1,6 @@
 package model;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -14,6 +11,8 @@ import com.hp.hpl.jena.rdf.model.RDFWriter;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+
+import controller.OntoPrinter;
 
 import exception.PrefixesNotAvailable;
 
@@ -121,13 +120,13 @@ public class OntoBuilded extends OntoPack{
  	}
  	
  	/**
- 	 * @param fileStr			a string representation of the file address used to save
+ 	 * @param outputFile			a string representation of the file address used to save
  	 * @param summaryModelNS	the name space referred to the summary model
  	 * @see PropSummaryModel
  	 */
- 	public void saveProtegeFile(String fileStr, String summaryModelNS) {
+ 	public void saveProtegeFile(String outputFile, String summaryModelNS) {
  		String preamble = protegePreamble(summaryModelNS);
- 		saveFile(fileStr, preamble);
+ 		saveFile(outputFile, preamble);
  	}
  	
  	/**
@@ -139,36 +138,21 @@ public class OntoBuilded extends OntoPack{
  	
  	/**
  	 * Save the ontology in a file 
- 	 * @param fileStr	a string representation of the file address used to save
- 	 * @param preamble	a preamble to insert at the top of the file
+ 	 * @param outputFile	a string representation of the file address used to save
+ 	 * @param preamble		a preamble to insert at the top of the file
  	 */
- 	public void saveFile(String fileStr, String preamble){
- 		OutputStream out = null;
- 		try {
-			out = new FileOutputStream(fileStr);
-			out.write(preamble.getBytes());
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.write(out, "RDF/XML-ABBREV", conf.getBase());
-		
-		try {
-			out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+ 	public void saveFile(String outputFile, String preamble){
+ 		OntoPrinter printer = new OntoPrinter(new DefaultOntoFormat(	model,
+ 																		conf.getBase(), 
+ 																		preamble));
+ 		printer.print(outputFile);
  	}
  	
 	/**
 	 * @param summaryModelNS	the name space of the summary model
 	 * @return a Protege preamble with correct namespaces 
 	 */
-	private String protegePreamble(String summaryModelNS){
+	public String protegePreamble(String summaryModelNS){
 		String pp = null;
 		try {
 			pp = readFileAsString(PROTEGE_INIT_FILE);
@@ -183,12 +167,55 @@ public class OntoBuilded extends OntoPack{
 	 * @param summaryModelNS	the name space of the summary model
 	 * @param protegeStr		a Protege preamble string with internal system tags
 	 * @see helper.ProtegeHelper for the tags
-	 * @return a Protege preamble with correct namespaces 
+	 * @return a Protege preamble with correct namespaces
 	 */
-	private String protegePreamble(String summaryModelNS, String protegeStr){
+	public String protegePreamble(String summaryModelNS, String protegeStr){
 		return protegePreamble(summaryModelNS, protegeStr, gConf.getPropSummaryModel());
 	}
 	
+	/**
+	 * @param originalOnto		the pre-summarization ontology
+	 * @param summaryModelNS	the name space of the summary model
+	 */
+	public void savePPEmbending(OntoLoaded originalOnto, String summaryModelNS){
+		String preamble = protegePreamble(summaryModelNS);
+		saveEmbending(defalultOutputFile(), originalOnto, preamble);
+	}
+	
+	/**
+	 * @param outputFile		a string representation of the file address used to save
+	 * @param originalOnto		the pre-summarization ontology
+	 * @param summaryModelNS	the name space of the summary model
+	 */
+	public void savePPEmbending(String outputFile, OntoLoaded originalOnto, String summaryModelNS){
+		String preamble = protegePreamble(summaryModelNS);
+		saveEmbending(outputFile, originalOnto, preamble);
+	}
+	
+	/**
+	 * @param originalOnto	the pre-summarization ontology
+	 */
+	public void saveEmbending(OntoLoaded originalOnto){
+		saveEmbending(defalultOutputFile(), originalOnto, "");
+	}
+	
+	
+	/**
+	 * @param outputFile	a string representation of the file address used to save
+	 * @param originalOnto	the pre-summarization ontology
+	 * @param preamble		a preamble to insert at the top of the file
+	 */
+	public void saveEmbending(String outputFile, OntoLoaded originalOnto, String preamble){
+		OntoFormat internalFormat = new DefaultOntoFormat(	originalOnto.model,
+															originalOnto.conf.getBase(),
+															"");
+		OntoFormat format = new EmbeddedOntoFormat(	model, 
+													conf.getBase(),
+													preamble,
+													internalFormat);
+ 		OntoPrinter printer = new OntoPrinter(format);
+ 		printer.print(outputFile);
+	}
 	
 	/**
 	 * @param summaryModelNS	the name space of the summary model
@@ -207,5 +234,6 @@ public class OntoBuilded extends OntoPack{
 	private String defalultOutputFile() {
 		return gConf.getOutputPath()  + conf.getName();
 	}
+	
 	
 }

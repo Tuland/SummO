@@ -30,10 +30,10 @@ public class Summarizator {
 	 * @param ClassSMStr 	a string that identifies the ClassSummaryModel instance
 	 */
 	public Summarizator(	String fileName, 
-						PropSummaryModel pSM, 
-						String PropSMStr, 
-						ClassSummaryModel cSM, 
-						String ClassSMStr) {
+							PropSummaryModel pSM, 
+							String PropSMStr, 
+							ClassSummaryModel cSM, 
+							String ClassSMStr) {
 		
 		propSM = pSM;
 		classSM = cSM;
@@ -138,6 +138,14 @@ public class Summarizator {
 	 */
 	public void saveOntoSummarized(){
 		ontoSummarized.saveFile();
+	}
+	
+	public void saveEmbendingOntoSumm(OntoLoaded originalOnto){
+		ontoSummarized.saveEmbending(originalOnto);
+	}
+	
+	public void savePPEmbendingOntoSumm(OntoLoaded originalOnto){
+		ontoSummarized.savePPEmbending(originalOnto, propSM.conf.getNameSpace());
 	}
 
 

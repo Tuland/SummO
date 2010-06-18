@@ -48,7 +48,7 @@ public class Starter {
 			// summ.getOntoSummarized().writeInd("AltraCosa");
 			// summ.writeTripleDirRel("IlMioSoggetto", "LaMiaProprieta", "IlMioOggetto");
 			
-			summ.savePPOntoSummarized();
+			summ.savePPEmbendingOntoSumm(ontoL);
 			
 		}
 			
