@@ -86,13 +86,9 @@ public class Summarizator {
 		Individual subjectInd = ontoSummarized.writeInd(subjectStr);
 		Individual objectInd = ontoSummarized.writeInd(objectStr);
 		
-		// Individual subjectInd = ontoSummarized.getInd(subjectStr);
-		// Individual objectInd = ontoSummarized.getInd(objectStr);
-		
 		ObjectProperty dirRelProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
 																	propSM.getOProp().getDirectedRel() );
-		OntProperty relationProp = ontoSummarized.model.createObjectProperty(	ontoSummarized.conf.getNameSpace() +
-																				propertyStr );
+		OntProperty relationProp = ontoSummarized.model.createObjectProperty( propertyStr );
 		dirRelProp.addSubProperty(relationProp);
 		
 		ontoSummarized.model.add(subjectInd, relationProp, objectInd);
@@ -104,8 +100,8 @@ public class Summarizator {
 	 * @param objectStr		the subject of the statement
 	 */
 	public void writeTripleGeneralizeRel(String subjectStr, String objectStr){
-		Individual subjectInd = ontoSummarized.getInd(subjectStr);
-		Individual objectInd = ontoSummarized.getInd(objectStr);
+		Individual subjectInd = ontoSummarized.writeInd(subjectStr);
+		Individual objectInd = ontoSummarized.writeInd(objectStr);
 		
 		ObjectProperty generalizeProp = propSM.model.getObjectProperty(	propSM.conf.getNameSpace() + 
 																		propSM.getOProp().getGeneralizeRel() );

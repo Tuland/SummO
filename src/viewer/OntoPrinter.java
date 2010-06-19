@@ -30,14 +30,15 @@ public class OntoPrinter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		format.say(out);
-		
 		try {
-			out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			format.say(out);
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 			e.printStackTrace();
+			}
 		}
 	}
 
