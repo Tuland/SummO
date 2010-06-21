@@ -33,7 +33,7 @@ public class Migrator {
 			while (rSet.hasNext()) {
 				QuerySolution sol = rSet.next();
 
-				translator.translate(sol, true);
+				translator.translate(sol);
 			}
 			
 		} finally { sFinder.stop(); }

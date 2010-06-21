@@ -2,12 +2,12 @@ package controller.query;
 
 public class DefaultDirRelQuery implements SummQuery, DirRelQuery{
 	
-	private static String VAR_SUBJ_STR = "subj";
-	private static String VAR_OBJ_STR = "obj";
-	private static String VAR_PROP_STR = "prop";
+	protected static String VAR_SUBJ_STR = "subj";
+	protected static String VAR_OBJ_STR = "obj";
+	protected static String VAR_PROP_STR = "prop";
 	
-	private static String P_DOMAIN_STR = "rdfs:domain";
-	private static String P_RANGE_STR = "rdfs:range";
+	protected static String P_DOMAIN_STR = "rdfs:domain";
+	protected static String P_RANGE_STR = "rdfs:range";
 	
 	private String varSubjStr;
 	private String varObjStr;
@@ -27,13 +27,7 @@ public class DefaultDirRelQuery implements SummQuery, DirRelQuery{
 		this.varObjStr = varObjStr;
 		this.varPropStr = varPropStr;
 		
-		this.queryStr = 
-			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
-			"SELECT ?" + varSubjStr + " ?" + varPropStr + " ?" + varObjStr + " " +
-			"WHERE {" +
-			"      ?" + varPropStr + " " + P_DOMAIN_STR  +" ?" + varSubjStr + " . " +
-			"      ?" + varPropStr + " " + P_RANGE_STR  +" ?" + varObjStr + " . " +
-			"      }";
+		this.queryStr = setQueryString();
 	}
 	
 	/**
@@ -71,5 +65,13 @@ public class DefaultDirRelQuery implements SummQuery, DirRelQuery{
 		return varPropStr;
 	}
 
+	protected String setQueryString(){ 
+		return	"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +
+				"SELECT ?" + varSubjStr + " ?" + varPropStr + " ?" + varObjStr + " " +
+				"WHERE {" +
+				"      ?" + varPropStr + " " + P_DOMAIN_STR  + " ?" + varSubjStr + " . " +
+				"      ?" + varPropStr + " " + P_RANGE_STR  + " ?" + varObjStr + " . " +
+				"      }";
+	}
 
 }

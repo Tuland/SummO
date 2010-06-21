@@ -18,35 +18,48 @@ public class GenRelTranlator implements Translator {
 	
 	private GenRelQuery genQ;
 	private Summarizator summ;
+	private boolean verboseOut;
+	private boolean verboseIn;
 	
-	public GenRelTranlator(Summarizator summ, GenRelQuery genQ){
+	public GenRelTranlator(	Summarizator summ, 
+							GenRelQuery genQ, 
+							boolean verboseIn,
+							boolean verboseOut){
 		this.genQ = genQ;
 		this.summ = summ;
+		this.verboseOut = verboseOut;
+		this.verboseIn = verboseIn;
+	}
+	
+	public GenRelTranlator(Summarizator summ, GenRelQuery genQ){
+		this(summ, genQ, false, false);
 	}
 
 	/* (non-Javadoc)
 	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution, boolean)
 	 */
-	public void translate(QuerySolution sol, boolean verbose) {
+	public void translate(QuerySolution sol) {
 
 		String subj = extractURI(sol, genQ.getVarSubjStr());
 		String obj = extractURI(sol, genQ.getVarObjStr());
 
 		if (subj !=null && obj !=null) {
+			
+			if (verboseIn){
+				System.out.println("SUBJ " + subj);
+				System.out.println("OBJ " + obj);
+				System.out.println();
+			}
 			summ.writeTripleGeneralizeRel(subj, obj);
-		} else if (verbose) {
+			
+		} else if (verboseOut) {
+			
 			List<String> list = new ArrayList<String>();
 			populateList(list, subj, obj);
 			printInclusionFailure("gen rel", list);
+			
 		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution)
-	 */
-	public void translate(QuerySolution sol) {
-		translate(sol, false);
-	}
+	}	
 	
 	private List<String> populateList(List<String> list, String el1, String el2) {
 		if (el1 != null) {

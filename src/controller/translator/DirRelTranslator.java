@@ -18,36 +18,60 @@ import controller.query.DirRelQuery;
 public class DirRelTranslator implements Translator{
 	private DirRelQuery dirRelQ;
 	private Summarizator summ;
+	private boolean verboseIn;
+	private boolean verboseOut;
 	
-	public DirRelTranslator(Summarizator summ, DirRelQuery dirRelQ){
+	/**
+	 * @param summ			a summarizator
+	 * @param dirRelQ		a query model
+	 * @param verboseIn		a flag that enables verbose mode. It shows included nodes
+	 * @param verboseOut	a flag that enables verbose mode. It shows excluded nodes
+	 */
+	public DirRelTranslator(	Summarizator summ, 
+								DirRelQuery dirRelQ, 
+								boolean verboseIn, 
+								boolean verboseOut){
 		this.dirRelQ = dirRelQ;
 		this.summ = summ;
+		this.verboseIn = verboseIn;
+		this.verboseOut = verboseOut;
+	}
+	
+	/**
+	 * @param summ		a summarizator
+	 * @param dirRelQ	a query model
+	 */
+	public DirRelTranslator(Summarizator summ, DirRelQuery dirRelQ){
+		this(summ, dirRelQ, false, false);
 	}
 	
 	/* (non-Javadoc)
 	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution, boolean)
 	 */
-	public void translate(QuerySolution sol, boolean verbose) {
-
+	public void translate(QuerySolution sol) {
 		String subj = extractURI(sol, dirRelQ.getVarSubjStr());
 		String prop = extractURI(sol, dirRelQ.getVarPropStr());
 		String obj = extractURI(sol, dirRelQ.getVarObjStr());
+		
 
 		if (subj !=null && prop !=null && obj !=null) {
+			
+			if (verboseIn){
+				System.out.println("SUBJ " + subj);
+				System.out.println("PROP " + prop);
+				System.out.println("OBJ " + obj);
+				System.out.println();
+			}
 			summ.writeTripleDirRel(subj, prop, obj);
-		}  else if (verbose) {
+			
+		}  else if (verboseOut) {
+			
 			List<String> list = new ArrayList<String>();
 			populateList(list, subj, prop, obj);
 			printInclusionFailure("dir rel", list);
+			
 		}
 		
-	}
-
-	/* (non-Javadoc)
-	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution)
-	 */
-	public void translate(QuerySolution sol) {
-		translate(sol, false);	
 	}
 	
 	private List<String> populateList(List<String> list, String el1, String el2, String el3) {
