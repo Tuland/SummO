@@ -11,6 +11,11 @@ public class DefaultGenRelQuery implements SummQuery, GenRelQuery{
 	private String varObjStr;
 	private String queryStr;
 	
+	/**
+	 * @param varSubjStr
+	 * @param propStr
+	 * @param varObjStr
+	 */
 	public DefaultGenRelQuery(String varSubjStr, String propStr ,String varObjStr){
 		this.varSubjStr = varSubjStr;
 		this.varObjStr = varObjStr;
@@ -24,22 +29,38 @@ public class DefaultGenRelQuery implements SummQuery, GenRelQuery{
 			
 	}
 	
+	/**
+	 * @param subjStr a variable name of subject
+	 * @param objStr a variable name of object
+	 */
 	public DefaultGenRelQuery(String subjStr, String objStr) {
 		this(subjStr, PROP_STR , objStr);
 	}
 	
+	/**
+	 * Implement generalize relationship query
+	 */
 	public DefaultGenRelQuery(){
 		this(VAR_SUBJ_STR, VAR_OBJ_STR);
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.query.GenRelQuery#getVarSubjStr()
+	 */
 	public String getVarSubjStr() {
 		return varSubjStr;
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.query.GenRelQuery#getVarObjStr()
+	 */
 	public String getVarObjStr() {
 		return varObjStr;
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.query.SummQuery#getQueryStr()
+	 */
 	public String getQueryStr() {
 		return queryStr;
 	}

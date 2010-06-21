@@ -17,11 +17,15 @@ public class StatementFinder {
 	private Query query;
 	private boolean verbose;
 	
+	/**
+	 * @param summQ		a query model
+	 * @param onto		a source ontology
+	 * @param verbose	a flag that enables the verbose mode. It shows SPARQL query results. 
+	 */
 	public StatementFinder(SummQuery summQ, OntoLoaded onto, boolean verbose){
 		this.verbose = verbose;
 		query = QueryFactory.create(summQ.getQueryStr());
 		
-		// Execute the query and obtain results
 		this.qe = QueryExecutionFactory.create(query, onto.model);
 	}
 	
@@ -29,7 +33,9 @@ public class StatementFinder {
 		this(summQ, onto, false);
 	}
 	
-	
+	/**
+	 * Start query execution
+	 */
 	public ResultSet start(){
 		ResultSet results = qe.execSelect();
 		if (verbose) {
@@ -38,7 +44,11 @@ public class StatementFinder {
 		return results;
 	}
 	
-	public void halt(){
+	
+	/**
+	 * Finish query execution
+	 */
+	public void stop(){
 		qe.close();
 	}
 

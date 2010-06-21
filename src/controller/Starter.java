@@ -52,21 +52,22 @@ public class Starter {
 			Summarizator summ = new Summarizator(ontoL.conf.getName(), propSM, classSM);
 			
 			//summ.getOntoSummarized().writeInd("http://www.pippo.net/ciao#AltraCosa");
-			//summ.writeTripleDirRel("http://www.pippo.net/ciao#IlMioSoggetto", "http://www.pippo.net/ciao#LaMiaProprieta", "IlMioOggetto");
-			// summ.writeTripleGeneralizeRel("IlMioSoggetto", "IlMioOggetto");
+			//summ.writeTripleDirRel("http://www.siti.it/ciao#IlMioSoggetto", "http://www.siti.it/ciao#LaMiaProprieta", "IlMioOggetto");
+			//summ.writeTripleGeneralizeRel("IlMioSoggetto", "IlMioOggetto");
 			
 			
 			/* */
 			StatementFinder sFinder;
 			Migrator migrator;
 			
-
+			// Generalize
 			DefaultGenRelQuery genQ = new DefaultGenRelQuery();
 			GenRelTranlator genRelTranslator = new GenRelTranlator(summ, genQ);
 			sFinder = new StatementFinder(genQ, ontoL);
 			migrator = new Migrator(genRelTranslator, sFinder);
 			migrator.start();
 			
+			//Directed relationship
 			DefaultDirRelQuery dirRelQ = new DefaultDirRelQuery();
 			DirRelTranslator dirRelTranslator = new DirRelTranslator(summ, dirRelQ);
 			sFinder = new StatementFinder(dirRelQ, ontoL);
@@ -74,6 +75,7 @@ public class Starter {
 			migrator.start();
 			/* */
 			
+			// Save in a file
 			summ.savePPEmbendingOntoSumm(ontoL);
 			//summ.savePPOntoSummarized();
 			

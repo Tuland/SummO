@@ -4,8 +4,6 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.OntProperty;
 
-import controller.bean.ConfBean;
-
 import model.ClassSummaryModel;
 import model.OntoBuilded;
 import model.OntoLoaded;
@@ -122,8 +120,8 @@ public class Summarizator {
 	
 	/**
 	 * Save the summarized ontology in a file (in the default location). This method apply the protege' preamble
-	 * @see ConfBean
-	 * @see OntoLoaded
+	 * @see controller.bean.ConfBean
+	 * @see model.OntoLoaded
 	 */
 	public void savePPOntoSummarized(){
 		ontoSummarized.saveProtegeFile(propSM.conf.getNameSpace());
@@ -131,19 +129,27 @@ public class Summarizator {
 	
 	/**
 	 * Save the summarized ontology in a file (in the default location). This method doesn't apply the protege' preamble
-	 * @see ConfBean
-	 * @see OntoLoaded
+	 * @see controller.bean.ConfBean
+	 * @see model.OntoLoaded
 	 */
 	public void saveOntoSummarized(){
 		ontoSummarized.saveFile();
 	}
 	
-	public void saveEmbendingOntoSumm(OntoLoaded originalOnto){
-		ontoSummarized.saveEmbending(originalOnto);
+	/**
+	 * Save a source ontology embending the ontology summarized
+	 * @param sourceOnto	a source ontology
+	 */
+	public void saveEmbendingOntoSumm(OntoLoaded sourceOnto){
+		ontoSummarized.saveEmbending(sourceOnto);
 	}
 	
-	public void savePPEmbendingOntoSumm(OntoLoaded originalOnto){
-		ontoSummarized.savePPEmbending(originalOnto, propSM.conf.getNameSpace());
+	/**
+	 * Save a source ontology embending the ontology summarized (with protege' preamble)
+	 * @param sourceOnto	a source ontology
+	 */
+	public void savePPEmbendingOntoSumm(OntoLoaded sourceOnto){
+		ontoSummarized.savePPEmbending(sourceOnto, propSM.conf.getNameSpace());
 	}
 
 

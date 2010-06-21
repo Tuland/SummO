@@ -1,7 +1,7 @@
 package controller.translator;
 
 import static controller.helper.TranslationHelper.extractURI;
-import static controller.helper.TranslationHelper.informNotIncluded;
+import static controller.helper.TranslationHelper.printInclusionFailure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,10 @@ import com.hp.hpl.jena.query.QuerySolution;
 import controller.Summarizator;
 import controller.query.DirRelQuery;
 
+/**
+ * @author tuland
+ * Directed relationship translator
+ */
 public class DirRelTranslator implements Translator{
 	private DirRelQuery dirRelQ;
 	private Summarizator summ;
@@ -20,6 +24,9 @@ public class DirRelTranslator implements Translator{
 		this.summ = summ;
 	}
 	
+	/* (non-Javadoc)
+	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution, boolean)
+	 */
 	public void translate(QuerySolution sol, boolean verbose) {
 
 		String subj = extractURI(sol, dirRelQ.getVarSubjStr());
@@ -31,11 +38,14 @@ public class DirRelTranslator implements Translator{
 		}  else if (verbose) {
 			List<String> list = new ArrayList<String>();
 			populateList(list, subj, prop, obj);
-			informNotIncluded("dir rel", list);
+			printInclusionFailure("dir rel", list);
 		}
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution)
+	 */
 	public void translate(QuerySolution sol) {
 		translate(sol, false);	
 	}

@@ -8,8 +8,12 @@ import com.hp.hpl.jena.query.QuerySolution;
 import controller.Summarizator;
 import controller.query.GenRelQuery;
 import static controller.helper.TranslationHelper.extractURI;
-import static controller.helper.TranslationHelper.informNotIncluded;
+import static controller.helper.TranslationHelper.printInclusionFailure;
 
+/**
+ * @author tuland
+ * Generalize relationship translator
+ */
 public class GenRelTranlator implements Translator {
 	
 	private GenRelQuery genQ;
@@ -20,6 +24,9 @@ public class GenRelTranlator implements Translator {
 		this.summ = summ;
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution, boolean)
+	 */
 	public void translate(QuerySolution sol, boolean verbose) {
 
 		String subj = extractURI(sol, genQ.getVarSubjStr());
@@ -30,10 +37,13 @@ public class GenRelTranlator implements Translator {
 		} else if (verbose) {
 			List<String> list = new ArrayList<String>();
 			populateList(list, subj, obj);
-			informNotIncluded("gen rel", list);
+			printInclusionFailure("gen rel", list);
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see controller.translator.Translator#translate(com.hp.hpl.jena.query.QuerySolution)
+	 */
 	public void translate(QuerySolution sol) {
 		translate(sol, false);
 	}

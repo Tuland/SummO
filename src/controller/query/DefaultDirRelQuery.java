@@ -14,6 +14,12 @@ public class DefaultDirRelQuery implements SummQuery, DirRelQuery{
 	private String varPropStr;
 	private String queryStr;
 
+	/**
+	 * Implement directed relationship query
+	 * @param varSubjStr	a variable name of subject 
+	 * @param varObjStr		a variable name of object 
+	 * @param varPropStr	a variable name of relationship (property) 
+	 */
 	public DefaultDirRelQuery(	String varSubjStr, 
 								String varObjStr,
 								String varPropStr) {
@@ -30,22 +36,37 @@ public class DefaultDirRelQuery implements SummQuery, DirRelQuery{
 			"      }";
 	}
 	
+	/**
+	 * Implement directed relationship query
+	 */
 	public DefaultDirRelQuery(){
 		this(VAR_SUBJ_STR, VAR_PROP_STR, VAR_OBJ_STR);
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.query.SummQuery#getQueryStr()
+	 */
 	public String getQueryStr() {
 		return queryStr;
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.query.DirRelQuery#getVarSubjStr()
+	 */
 	public String getVarSubjStr() {
 		return varSubjStr;
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.query.DirRelQuery#getVarObjStr()
+	 */
 	public String getVarObjStr() {
 		return varObjStr;
 	}
 
+	/* (non-Javadoc)
+	 * @see controller.query.DirRelQuery#getVarPropStr()
+	 */
 	public String getVarPropStr() {
 		return varPropStr;
 	}
