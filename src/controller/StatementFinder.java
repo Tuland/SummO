@@ -7,6 +7,8 @@ import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFormatter;
 
+import controller.query.SummQuery;
+
 import model.OntoLoaded;
 
 public class StatementFinder {

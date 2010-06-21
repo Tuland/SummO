@@ -1,7 +1,7 @@
 package test;
 
+import static model.helper.ProtegeHelper.*;
 import static org.junit.Assert.*;
-import static helper.ProtegeHelper.*;
 
 import java.util.HashMap;
 

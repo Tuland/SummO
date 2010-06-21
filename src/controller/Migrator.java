@@ -3,6 +3,8 @@ package controller;
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 
+import controller.translator.Translator;
+
 public class Migrator {
 	
 	private Translator translator;
@@ -20,7 +22,7 @@ public class Migrator {
 			while (rSet.hasNext()) {
 				QuerySolution sol = rSet.next();
 
-				translator.translate(sol);
+				translator.translate(sol, true);
 			}
 			
 		} finally { sFinder.halt(); }

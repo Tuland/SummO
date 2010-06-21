@@ -1,4 +1,4 @@
-package controller;
+package controller.query;
 
 public class DefaultDirRelQuery implements SummQuery, DirRelQuery{
 	

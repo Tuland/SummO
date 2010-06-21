@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.Serializable;
+
 import static helper.PathHelper.buildFileAddr;
 
 public class ConfBean implements Serializable{

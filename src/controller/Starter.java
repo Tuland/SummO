@@ -5,6 +5,11 @@ import java.io.FileNotFoundException;
 
 import org.ho.yaml.Yaml;
 
+import controller.query.DefaultDirRelQuery;
+import controller.query.DefaultGenRelQuery;
+import controller.translator.DirRelTranslator;
+import controller.translator.GenRelTranlator;
+
 import model.ClassSummaryModel;
 import model.OntoLoaded;
 import model.PropSummaryModel;
@@ -45,7 +50,7 @@ public class Starter {
 
 			Summarizator summ = new Summarizator(ontoL.conf.getName(), propSM, classSM);
 			
-			// summ.getOntoSummarized().writeInd("AltraCosa");
+			//summ.getOntoSummarized().writeInd("http://www.pippo.net/ciao#AltraCosa");
 			//summ.writeTripleDirRel("http://www.pippo.net/ciao#IlMioSoggetto", "http://www.pippo.net/ciao#LaMiaProprieta", "IlMioOggetto");
 			// summ.writeTripleGeneralizeRel("IlMioSoggetto", "IlMioOggetto");
 			
@@ -68,8 +73,8 @@ public class Starter {
 			migrator.start();
 			/* */
 			
-			//summ.savePPEmbendingOntoSumm(ontoL);
-			summ.savePPOntoSummarized();
+			summ.savePPEmbendingOntoSumm(ontoL);
+			//summ.savePPOntoSummarized();
 			
 		}
 			

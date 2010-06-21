@@ -1,10 +1,10 @@
 package test;
 
+import static helper.PathHelper.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import static helper.PathHelper.*;
 
 public class PathHelperTest {
 

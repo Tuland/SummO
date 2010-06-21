@@ -22,9 +22,9 @@ import exception.PrefixesNotAvailable;
 
 
 import static controller.Starter.gConf;
-import static helper.ProtegeHelper.convertTags;
-import static helper.ProtegeHelper.PROTEGE_INIT_FILE;
 import static helper.IOHelper.readFileAsString;
+import static model.helper.ProtegeHelper.PROTEGE_INIT_FILE;
+import static model.helper.ProtegeHelper.convertTags;
 
 /**
  * @author tuland
@@ -68,7 +68,6 @@ public class OntoBuilded extends OntoPack{
 	 * @return a resource that represents an individual node in ontology model
 	 */
 	public Individual getInd(String individualStr) {
-		System.out.println(conf.getNameSpace() + individualStr + "!!!!!!!!!!!!!!!!!!!!!!");
 		return model.getIndividual(conf.getNameSpace() + individualStr);
 	}
 	
@@ -77,7 +76,7 @@ public class OntoBuilded extends OntoPack{
 	 * @return a resource that represents an Individual node in this model
 	 */
 	public Individual writeInd(String individualStr) {
-		return conceptClass.createIndividual(conf.getNameSpace() + individualStr);
+		return conceptClass.createIndividual(individualStr);
 	}
 	
 	/**
@@ -170,7 +169,7 @@ public class OntoBuilded extends OntoPack{
 	/**
 	 * @param summaryModelNS	the name space of the summary model
 	 * @param protegeStr		a Protege preamble string with internal system tags
-	 * @see helper.ProtegeHelper for the tags
+	 * @see model.helper.ProtegeHelper for the tags
 	 * @return a Protege preamble with correct namespaces
 	 */
 	public String protegePreamble(String summaryModelNS, String protegeStr){
@@ -225,7 +224,7 @@ public class OntoBuilded extends OntoPack{
 	 * @param summaryModelNS	the name space of the summary model
 	 * @param protegeStr 		a Protege preamble string with internal system tags
 	 * @param prefixPropSM		a string representation of the prefix to assign to the (prop) summary model namespace
-	 * @see helper.ProtegeHelper for the tags
+	 * @see model.helper.ProtegeHelper for the tags
 	 * @return a Protege preamble with correct namespaces 
 	 */
 	private String protegePreamble(String summaryModelNS, String protegeStr, String prefixPropSM){
