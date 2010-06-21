@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 import org.ho.yaml.Yaml;
 
+import controller.bean.ConfBean;
 import controller.query.DefaultDirRelQuery;
 import controller.query.DefaultGenRelQuery;
 import controller.translator.DirRelTranslator;

@@ -1,4 +1,4 @@
-package model;
+package model.bean;
 
 
 import static helper.PathHelper.*;

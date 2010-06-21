@@ -4,6 +4,8 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.OntProperty;
 
+import controller.bean.ConfBean;
+
 import model.ClassSummaryModel;
 import model.OntoBuilded;
 import model.OntoLoaded;

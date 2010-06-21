@@ -1,4 +1,4 @@
-package controller;
+package controller.bean;
 
 import java.io.Serializable;
 

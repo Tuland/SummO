@@ -3,6 +3,8 @@ package model;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import model.bean.PropSetBean;
+
 import org.ho.yaml.Yaml;
 
 import com.hp.hpl.jena.ontology.OntologyException;

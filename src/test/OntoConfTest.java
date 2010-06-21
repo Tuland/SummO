@@ -2,7 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
-import model.OntoConfBean;
+import model.bean.OntoConfBean;
 
 import org.junit.Test;
 
