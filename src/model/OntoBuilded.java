@@ -2,6 +2,8 @@ package model;
 
 import java.io.IOException;
 
+import model.exception.PrefixesNotAvailable;
+
 import viewer.DefaultOntoFormat;
 import viewer.EmbeddedOntoFormat;
 import viewer.OntoFormat;
@@ -18,7 +20,6 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 
-import exception.PrefixesNotAvailable;
 
 
 import static controller.Starter.gConf;

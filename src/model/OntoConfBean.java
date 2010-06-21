@@ -6,7 +6,8 @@ import static helper.PathHelper.*;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import exception.PrefixesNotAvailable;
+import model.exception.PrefixesNotAvailable;
+
 
 
 /**
