@@ -1,0 +1,35 @@
+================================================================
+Authors                 : Tullio Landoni
+Email Addresses         : tuland@gmail.com
+================================================================
+h1.  SummO: Ontology summarization
+================================================================
+h2. Copyright / Permissions
+----------------------------------------------------------------
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions.
+Details: http://www.gnu.org/licenses/gpl.html
+================================================================
+================================================================
+h2. Configuration
+----------------------------------------------------------------
+Configuration files use YAML syntax: http://www.yaml.org/
+----------------------------------------------------------------
+jyaml.yml				- jyaml configuration
+Conf/conf.yaml 			- general configuration
+Conf/{aeria|skos}.yaml	- summary model configuration
+Conf/summarization.yaml	- output ontology configuration
+
+Conf/OntoIn/*.yaml		- input ontology configuration
+Conf/Class/*.yaml		- ontology class configuration
+Conf/Prop/*.yaml		- ontology property configuration
+================================================================
+h2. Output
+----------------------------------------------------------------
+OntoOut/*
+----------------------------------------------------------------
+See Conf/summarization.yaml
+================================================================
+
+
