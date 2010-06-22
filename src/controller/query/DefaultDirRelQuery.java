@@ -1,5 +1,9 @@
 package controller.query;
 
+/**
+ * @author tuland
+ *
+ */
 public class DefaultDirRelQuery implements SummQuery, DirRelQuery{
 	
 	protected static String VAR_SUBJ_STR = "subj";

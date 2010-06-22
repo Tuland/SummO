@@ -5,6 +5,10 @@ import java.io.IOException;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
+/**
+ * @author tuland
+ *
+ */
 public class EmbeddedOntoFormat implements OntoFormat{
 	
 	private static final String INIT_COMMENT = "<!--BEGIN_SUMM\n";

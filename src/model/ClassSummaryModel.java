@@ -12,6 +12,10 @@ import com.hp.hpl.jena.rdf.model.HasNoModelException;
 
 import static controller.Starter.gConf;
 
+/**
+ * @author tuland
+ *
+ */
 public class ClassSummaryModel extends OntoLoaded {
 	private ClassSetBean oClass;
 

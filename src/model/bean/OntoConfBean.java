@@ -11,9 +11,9 @@ import model.exception.PrefixesNotAvailable;
 
 
 /**
- * @author tuland
  * This class (JavaBean) provides general ontology infos.
  * Using YAML is necessary invoke updateFields after initialization
+ * @author tuland
  *  
  */
 public class OntoConfBean implements Serializable {
@@ -56,7 +56,7 @@ public class OntoConfBean implements Serializable {
 	/**
 	 * This method recalculate the values of name, url, base and nameSpace
 	 * Using YAML is necessary invoke it after initialization
-	 * @param baseAddition	an addition (string) to complete the base name
+	 * @param nameAddition	an addition (string) to complete the base name
 	 */
 	public void updateFields(String nameAddition) {
 		name = verifyName(name + nameAddition, ext);

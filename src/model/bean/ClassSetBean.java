@@ -2,6 +2,10 @@ package model.bean;
 
 import java.io.Serializable;
 
+/**
+ * @author tuland
+ *
+ */
 public class ClassSetBean implements Serializable{
 	/**
 	 * 

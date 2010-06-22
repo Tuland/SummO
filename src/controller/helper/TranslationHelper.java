@@ -6,6 +6,10 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 
+/**
+ * @author tuland
+ *
+ */
 public class TranslationHelper {
 	
 	/**

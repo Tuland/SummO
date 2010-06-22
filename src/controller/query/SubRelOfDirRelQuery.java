@@ -1,5 +1,9 @@
 package controller.query;
 
+/**
+ * @author tuland
+ *
+ */
 public class SubRelOfDirRelQuery extends DefaultDirRelQuery implements SummQuery, DirRelQuery{
 	protected static String P_SUBPROP_STR = "rdfs:subPropertyOf";
 	

@@ -6,6 +6,10 @@ import java.io.IOException;
 import com.hp.hpl.jena.ontology.OntModel;
 
 
+/**
+ * @author tuland
+ *
+ */
 public class DefaultOntoFormat implements OntoFormat{
 	private OntModel model;
 	private String base;

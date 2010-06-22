@@ -4,8 +4,9 @@ import com.hp.hpl.jena.ontology.OntologyException;
 import com.hp.hpl.jena.rdf.model.HasNoModelException;
 
 /**
- * @author tuland
  * This class performs an ontology completely loaded from a file
+ * @author tuland
+ * 
  */
 public class OntoLoaded extends OntoPack{
 

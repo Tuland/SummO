@@ -12,10 +12,11 @@ import model.PropSummaryModel;
 import static controller.Starter.gConf;
 
 /**
+ * This class builds the summarized ontology
  * @author tuland
  *
  */
-public class Summarizator {
+public class OntoBuilder {
 
 	private OntoBuilded ontoSummarized;
 
@@ -29,7 +30,7 @@ public class Summarizator {
 	 * @param cSM 			a ClassSummaryModel instance (ontology mediator in the translation)
 	 * @param ClassSMStr 	a string that identifies the ClassSummaryModel instance
 	 */
-	public Summarizator(	String fileName, 
+	public OntoBuilder(	String fileName, 
 							PropSummaryModel pSM, 
 							String PropSMStr, 
 							ClassSummaryModel cSM, 
@@ -56,7 +57,6 @@ public class Summarizator {
 		
 		ontoSummarized.conceptClass = ontoSummarized.model.createClass(classSM.model.getOntClass(	classSM.conf.getNameSpace() + 
 																									classSM.getOClass().getConcept()).toString());
-		
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class Summarizator {
 	 * @param pSM 		a PropSummaryModel instance (ontology mediator in the translation) 
 	 * @param cSM 		a ClassSummaryModel instance (ontology mediator in the translation)
 	 */
-	public Summarizator(	String fileName, 
+	public OntoBuilder(	String fileName, 
 						PropSummaryModel pSM, 
 						ClassSummaryModel cSM) {
 		this(	fileName, 
@@ -72,7 +72,6 @@ public class Summarizator {
 				gConf.getPropSummaryModel(), 
 				cSM, 
 				gConf.getClassSummaryModel());
-
 	}
 	
 	/**
@@ -107,8 +106,6 @@ public class Summarizator {
 																		propSM.getOProp().getGeneralizeRel() );
 		
 		ontoSummarized.model.add(subjectInd, generalizeProp, objectInd);
-		
-		 
 	}
 
 	/**
@@ -137,7 +134,7 @@ public class Summarizator {
 	}
 	
 	/**
-	 * Save a source ontology embending the ontology summarized
+	 * Save a source ontology embedding the ontology summarized
 	 * @param sourceOnto	a source ontology
 	 */
 	public void saveEmbendingOntoSumm(OntoLoaded sourceOnto){
@@ -145,12 +142,11 @@ public class Summarizator {
 	}
 	
 	/**
-	 * Save a source ontology embending the ontology summarized (with protege' preamble)
+	 * Save a source ontology embedding the ontology summarized (with protege' preamble)
 	 * @param sourceOnto	a source ontology
 	 */
 	public void savePPEmbendingOntoSumm(OntoLoaded sourceOnto){
 		ontoSummarized.savePPEmbending(sourceOnto, propSM.conf.getNameSpace());
 	}
-
 
 }

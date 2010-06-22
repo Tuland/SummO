@@ -5,23 +5,24 @@ import java.util.List;
 
 import com.hp.hpl.jena.query.QuerySolution;
 
-import controller.Summarizator;
+import controller.OntoBuilder;
 import controller.query.GenRelQuery;
 import static controller.helper.TranslationHelper.extractURI;
 import static controller.helper.TranslationHelper.printInclusionFailure;
 
 /**
- * @author tuland
  * Generalize relationship translator
+ * @author tuland
+ * 
  */
 public class GenRelTranlator implements Translator {
 	
 	private GenRelQuery genQ;
-	private Summarizator summ;
+	private OntoBuilder summ;
 	private boolean verboseOut;
 	private boolean verboseIn;
 	
-	public GenRelTranlator(	Summarizator summ, 
+	public GenRelTranlator(	OntoBuilder summ, 
 							GenRelQuery genQ, 
 							boolean verboseIn,
 							boolean verboseOut){
@@ -31,7 +32,7 @@ public class GenRelTranlator implements Translator {
 		this.verboseIn = verboseIn;
 	}
 	
-	public GenRelTranlator(Summarizator summ, GenRelQuery genQ){
+	public GenRelTranlator(OntoBuilder summ, GenRelQuery genQ){
 		this(summ, genQ, false, false);
 	}
 

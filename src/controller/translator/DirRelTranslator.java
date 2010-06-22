@@ -8,16 +8,17 @@ import java.util.List;
 
 import com.hp.hpl.jena.query.QuerySolution;
 
-import controller.Summarizator;
+import controller.OntoBuilder;
 import controller.query.DirRelQuery;
 
 /**
- * @author tuland
  * Directed relationship translator
+ * @author tuland
+ * 
  */
 public class DirRelTranslator implements Translator{
 	private DirRelQuery dirRelQ;
-	private Summarizator summ;
+	private OntoBuilder summ;
 	private boolean verboseIn;
 	private boolean verboseOut;
 	
@@ -27,7 +28,7 @@ public class DirRelTranslator implements Translator{
 	 * @param verboseIn		a flag that enables verbose mode. It shows included nodes
 	 * @param verboseOut	a flag that enables verbose mode. It shows excluded nodes
 	 */
-	public DirRelTranslator(	Summarizator summ, 
+	public DirRelTranslator(	OntoBuilder summ, 
 								DirRelQuery dirRelQ, 
 								boolean verboseIn, 
 								boolean verboseOut){
@@ -41,7 +42,7 @@ public class DirRelTranslator implements Translator{
 	 * @param summ		a summarizator
 	 * @param dirRelQ	a query model
 	 */
-	public DirRelTranslator(Summarizator summ, DirRelQuery dirRelQ){
+	public DirRelTranslator(OntoBuilder summ, DirRelQuery dirRelQ){
 		this(summ, dirRelQ, false, false);
 	}
 	

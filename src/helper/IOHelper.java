@@ -4,6 +4,10 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 
+/**
+ * @author tuland
+ *
+ */
 public class IOHelper {
 	
 	/**

@@ -1,5 +1,9 @@
 package helper;
 
+/**
+ * @author tuland
+ *
+ */
 public class PathHelper {
 	
 	/**
@@ -21,7 +25,6 @@ public class PathHelper {
 	public static String verifyPath(String path) {
 		return verifyEndString(path, "/");
 	}
-	
 	
 	/**
 	 * @param nameSpace	a name space (string)

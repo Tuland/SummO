@@ -1,5 +1,9 @@
 package controller.query;
 
+/**
+ * @author tuland
+ *
+ */
 public class DefaultGenRelQuery implements SummQuery, GenRelQuery{
 	
 	private static String VAR_SUBJ_STR = "subj";

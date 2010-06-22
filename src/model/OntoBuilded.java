@@ -28,8 +28,9 @@ import static model.helper.ProtegeHelper.PROTEGE_INIT_FILE;
 import static model.helper.ProtegeHelper.convertTags;
 
 /**
- * @author tuland
  * This class performs an ontology created step by step
+ * @author tuland
+ * 
  */
 public class OntoBuilded extends OntoPack{
 	public RDFWriter writer;

@@ -7,6 +7,10 @@ import model.bean.OntoConfBean;
 import org.junit.Test;
 
 
+/**
+ * @author tuland
+ *
+ */
 public class OntoConfTest {
 	private static final String EXT = "owl";
 	private static final String PATH = "http://127.0.0.1/";

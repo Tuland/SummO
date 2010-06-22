@@ -1,5 +1,9 @@
 package controller.query;
 
+/**
+ * @author tuland
+ *
+ */
 public interface GenRelQuery {
 	/**
 	 * @return the variable name of subject in the query

@@ -11,7 +11,11 @@ import controller.query.SummQuery;
 
 import model.OntoLoaded;
 
-public class StatementFinder {
+/**
+ * This class is a interpreter that talks with the source ontology in the summarization process
+ * @author tuland
+ */
+public class NodeFinder {
 	
 	private QueryExecution qe;
 	private Query query;
@@ -22,14 +26,18 @@ public class StatementFinder {
 	 * @param onto		a source ontology
 	 * @param verbose	a flag that enables the verbose mode. It shows SPARQL query results. 
 	 */
-	public StatementFinder(SummQuery summQ, OntoLoaded onto, boolean verbose){
+	public NodeFinder(SummQuery summQ, OntoLoaded onto, boolean verbose){
 		this.verbose = verbose;
 		query = QueryFactory.create(summQ.getQueryStr());
 		
 		this.qe = QueryExecutionFactory.create(query, onto.model);
 	}
 	
-	public StatementFinder(SummQuery summQ, OntoLoaded onto){
+	/**
+	 * @param summQ		a query model
+	 * @param onto		a source ontology
+	 */
+	public NodeFinder(SummQuery summQ, OntoLoaded onto){
 		this(summQ, onto, false);
 	}
 	

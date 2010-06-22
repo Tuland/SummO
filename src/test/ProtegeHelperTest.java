@@ -7,6 +7,10 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
+/**
+ * @author tuland
+ *
+ */
 public class ProtegeHelperTest {
 	private String str1a = "AAA";
 	private String str2a = "BBB";

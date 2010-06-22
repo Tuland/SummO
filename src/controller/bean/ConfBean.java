@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import static helper.PathHelper.buildFileAddr;
 
+/**
+ * @author tuland
+ *
+ */
 public class ConfBean implements Serializable{
 
 	/**

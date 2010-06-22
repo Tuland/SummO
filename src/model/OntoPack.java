@@ -13,11 +13,14 @@ import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 /**
+ * This class joins different ontology views:
+ * <ul>
+ * <li> configuration (general data)</li>
+ * <li> model (Jena model)</li>
+ * <li> ontology (real content provided by Jena)</li>
+ * </ul>
  * @author tuland
- * This class joins different ontology views: 
- * - configuration (general data)
- * - model (Jena model)
- * - ontology (real content provided by Jena)
+ * 
  */
 public class OntoPack {
 	public OntoConfBean conf;
@@ -44,7 +47,6 @@ public class OntoPack {
 		setConf(confFile, fileName);
 		setModel();
 	}
-	
 	
 	/**
 	 * Build general ontology infos

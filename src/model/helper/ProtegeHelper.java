@@ -3,6 +3,10 @@ package model.helper;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ * @author tuland
+ *
+ */
 public class ProtegeHelper {
 	
 	public static final String PROTEGE_INIT_FILE = "SupportFiles/protegeInit.txt";
@@ -17,7 +21,7 @@ public class ProtegeHelper {
 	 * @param preamble	a the protege preamble not converted yet
 	 * @param convMap	a mapping for the substitution
 	 * @return the preamble with the correct substitutions
-	 * @see PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
+	 * @see model.PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
 	 */
 	public static String convertTags(String preamble, HashMap <String,String> convMap)  {
 		Iterator<String> convSetIterator = convMap.keySet().iterator();
@@ -36,7 +40,7 @@ public class ProtegeHelper {
 	 * @param summaryModelNS	a substitute of PROTEGE_SMNS
 	 * @param thisNS 			a substitute of PROTEGE_TNS
 	 * @return the preamble with the correct substitutions
-	 * @see PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
+	 * @see model.PropSummaryModel (aeria). ClassSummaryModel is not considered (Skos is already included)
 	 */
 	public static String convertTags(String preamble, String summaryModel, String summaryModelNS, String thisNS) {
 		HashMap<String, String> convMap = new HashMap<String, String>();
