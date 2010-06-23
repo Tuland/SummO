@@ -1,6 +1,6 @@
 
 |Authors|Tullio Landoni|
-|Email Addresses|tuland@gmail.com|
+|Email Addresses|tuland[at]gmail[dot]com|
 
 h1.  SummO: Ontology summarization
 
