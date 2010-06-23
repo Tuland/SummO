@@ -18,7 +18,7 @@ h2. Configuration
 
 p. Configuration files use YAML syntax: http://www.yaml.org/
 
-|_.File|_.Infos|
+|_.File|_.Info|
 |@jyaml.yml@|jyaml configuration|
 |@Conf/conf.yaml@|general configuration|
 |@Conf/aeria.yaml@ 
@@ -30,7 +30,7 @@ p. Configuration files use YAML syntax: http://www.yaml.org/
 
 h2. Output
 
-|_.File|_.Infos|
+|_.File|_.Info|
 |@OntoOut/*@|output files|
 
 p. See @Conf/summarization.yaml@
