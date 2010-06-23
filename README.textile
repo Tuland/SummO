@@ -16,7 +16,7 @@ see @COPYING.LESSER@
 
 h2. Configuration
 
-p. Configuration files use YAML syntax: http://www.yaml.org/
+p. Configuration files use "YAML syntax":http://www.yaml.org
 
 |_.File|_.Info|
 |@jyaml.yml@|jyaml configuration|
