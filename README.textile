@@ -1,0 +1,37 @@
+
+|Authors|Tullio Landoni|
+|Email Addresses|tuland@gmail.com|
+
+h1.  SummO: Ontology summarization
+
+h2. Copyright / Permissions
+
+p. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. 
+p. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
+p. You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+See @COPYING@
+see @COPYING.LESSER@
+
+
+h2. Configuration
+
+p. Configuration files use YAML syntax: http://www.yaml.org/
+
+|_.File|._Infos|
+|@jyaml.yml@|jyaml configuration|
+|@Conf/conf.yaml@|general configuration|
+|@Conf/{aeria|skos}.yaml@|summary model configuration|
+|@Conf/summarization.yaml@|output ontology configuration|
+|@Conf/OntoIn/*.yaml@|input ontology configuration|
+|@Conf/Class/*.yaml@|ontology class configuration|
+|@Conf/Prop/*.yaml@|ontology property configuration|
+
+h2. Output
+
+|_.File|._Infos|
+|@OntoOut/*@|output files|
+
+p. See @Conf/summarization.yaml@
+
+
