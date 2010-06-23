@@ -21,7 +21,8 @@ p. Configuration files use YAML syntax: http://www.yaml.org/
 |_.File|_.Infos|
 |@jyaml.yml@|jyaml configuration|
 |@Conf/conf.yaml@|general configuration|
-|@Conf/{aeria ==no | == skos}.yaml@|summary model configuration|
+|@Conf/aeria.yaml@ 
+@Conf/skos.yaml@|summary model configuration|
 |@Conf/summarization.yaml@|output ontology configuration|
 |@Conf/OntoIn/*.yaml@|input ontology configuration|
 |@Conf/Class/*.yaml@|ontology class configuration|
