@@ -21,7 +21,8 @@ import controller.query.SummQuery;
 import model.OntoLoaded;
 
 /**
- * This class is a interpreter that talks with the source ontology in the summarization process
+ * This class is a interpreter that talks with the source ontology in the summarization process. 
+ * It sets an entity language [Jerome Euzenat e Pavel Shvaiko. “Ontology matching”. In: Heidelberg (DE): Springer-Verlag, 2007. Cap. 2, pp. 45–46.]. 
  * @author tuland
  */
 public class NodeFinder {
